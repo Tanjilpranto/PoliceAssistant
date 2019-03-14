@@ -8,7 +8,8 @@
     tools:context=".SignupActivity"
     android:background="@drawable/background2"
     android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:weightSum="14">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/uploadImg"
@@ -131,7 +132,7 @@
         android:textColor="#5f4339"
         android:textColorHint="#756B6A"
         android:layout_weight="1"
-        android:layout_marginTop="-25dp"/>
+        android:layout_marginTop="-15dp"/>
 
     <EditText
         android:id="@+id/editTextEmail"
