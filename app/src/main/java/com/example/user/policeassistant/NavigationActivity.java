@@ -24,11 +24,14 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 public class NavigationActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     Toolbar toolbar;
     DrawerLayout drawerLayout;
+    StorageReference storageReference;
     private FloatingActionButton fab2;
     private DatabaseReference mdatabase;
     private String SplitUsername;
@@ -50,6 +53,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         toolbar= findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         mdatabase=FirebaseDatabase.getInstance().getReference("Users");
+        storageReference= FirebaseStorage.getInstance().getReference();
 
         mdatabase.child(SplitUsername).child("Username").addValueEventListener(new ValueEventListener() {
             @Override
@@ -104,10 +108,6 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         TextView textviewUser=header.findViewById(R.id.profileUsername);
         textviewUser.setText(user);
     }
-
-
-
-
 
 
 

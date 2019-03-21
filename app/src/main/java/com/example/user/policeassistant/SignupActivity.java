@@ -114,13 +114,6 @@ public class SignupActivity extends AppCompatActivity {
 
 
 
-
-
-
-
-
-
-
         //When we press sing in button inside the sign up page
         SignupSignin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -141,6 +134,8 @@ public class SignupActivity extends AppCompatActivity {
 
                    SignUp();
                    upload();
+
+
 
 
                }catch (Exception e){
@@ -169,7 +164,7 @@ public class SignupActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     pd.dismiss();
-                    Toast.makeText(SignupActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
+
                     EditTextFullname.setText("");
                     EditTextEmail.setText("");
                     EditTextUsername.setText("");
@@ -194,7 +189,7 @@ public class SignupActivity extends AppCompatActivity {
             });
         }
         else {
-            Toast.makeText(SignupActivity.this, "Select an image", Toast.LENGTH_SHORT).show();
+
         }
     }
 
@@ -278,8 +273,6 @@ public class SignupActivity extends AppCompatActivity {
 
         reference.child(SplitEmail).setValue(information);
 
-        //Toast.makeText(this,"Information Saved to database",Toast.LENGTH_LONG).show();
-
 
 
 
@@ -300,34 +293,36 @@ public class SignupActivity extends AppCompatActivity {
 
         if(passwordString.equals(passRe)  ){
 
-        firebaseAuth.createUserWithEmailAndPassword(emailString,passwordString).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                try{
+            if(pickedImageUri!=null) {
+                firebaseAuth.createUserWithEmailAndPassword(emailString, passwordString).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        try {
 
-                    if(task.isSuccessful())
-                    {
-                        SaveToDatabase();
-                        //Toast.makeText(SignupActivity.this,"Registration Successful",Toast.LENGTH_SHORT).show();
+                            if (task.isSuccessful()) {
+                                SaveToDatabase();
+
+                            } else {
+                                if (task.getException() instanceof FirebaseAuthUserCollisionException) {
+                                    Toast.makeText(getApplicationContext(), "Email already registered.", Toast.LENGTH_SHORT).show();
+                                    pd.dismiss();
+                                } else {
+                                    Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
+                            }
+                        } catch (Exception e) {
+
+                            //Toast.makeText(getApplicationContext(),"Error!!",Toast.LENGTH_SHORT).show();
+                        }
+
 
                     }
-                    else{
-                        if(task.getException() instanceof FirebaseAuthUserCollisionException){
-                            Toast.makeText(getApplicationContext(),"Email already registered.",Toast.LENGTH_SHORT).show();
-                        }
-                        else{
-                            Toast.makeText(getApplicationContext(),task.getException().getMessage(),Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-                    }
-                }catch (Exception e){
-
-                    //Toast.makeText(getApplicationContext(),"Error!!",Toast.LENGTH_SHORT).show();
-                }
-
+                });
+            }else{
+                Toast.makeText(SignupActivity.this, "Select an image", Toast.LENGTH_SHORT).show();
 
             }
-        });
     }else {
             Toast.makeText(SignupActivity.this,"Password Not Matched!",Toast.LENGTH_SHORT).show();
         }

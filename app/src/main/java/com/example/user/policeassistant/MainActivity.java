@@ -40,8 +40,6 @@ private int RadioSelect;
 
 public void SignIn(){
 
-    //sakhfksak
-    //Changed
 
 
     String username=user.getText().toString().trim();
