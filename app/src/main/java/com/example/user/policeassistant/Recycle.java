@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ public class Recycle extends AppCompatActivity {
     private RecyclerView mBloglist;
     private DatabaseReference mDatabase;
     private static Context context;
+
 
 
     @Override
@@ -42,6 +44,14 @@ public class Recycle extends AppCompatActivity {
         mBloglist.setLayoutManager(mLinearLayoutManager);
 
         context = this;
+
+
+
+
+
+
+
+
 
 
     }
@@ -90,6 +100,9 @@ public class Recycle extends AppCompatActivity {
                     context.startActivity(intent);*/
                 }
             });
+
+
+
         }
 
         public void setTitle(String title)

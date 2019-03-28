@@ -173,6 +173,7 @@ public class SignupActivity extends AppCompatActivity {
                     Intent intent=new Intent(getApplicationContext(),SignupActivity.class);
                     startActivity(intent);
                     finish();
+                    Toast.makeText(getApplicationContext(), "Registration Successful", Toast.LENGTH_SHORT).show();
 
 
 
@@ -298,6 +299,7 @@ public class SignupActivity extends AppCompatActivity {
 
                             if (task.isSuccessful()) {
                                 SaveToDatabase();
+
 
                             } else {
                                 if (task.getException() instanceof FirebaseAuthUserCollisionException) {

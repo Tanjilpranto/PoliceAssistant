@@ -6,7 +6,7 @@
     android:padding="16dp"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="192dp">
+    android:layout_height="195dp">
     
 
     <ImageView
@@ -16,24 +16,25 @@
 
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="265dp"
+        android:layout_height="166dp"
         android:layout_marginLeft="16dp">
+
 
         <TextView
             android:id="@+id/time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Today, 10:00 AM"
-            android:textSize="10dp"
-            android:textColor="#8D6E63"/>
+            android:textColor="#8D6E63"
+            android:textSize="10dp" />
 
         <Button
             android:id="@+id/saveText"
             android:layout_width="78dp"
             android:layout_height="22dp"
-            android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
             android:layout_marginRight="2dp"
             android:background="@drawable/roundcorner"
             android:drawableLeft="@drawable/ic_action_save"
@@ -45,60 +46,60 @@
             android:id="@+id/post_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/time"
             android:text="This is the crime"
             android:textColor="#5f4339"
             android:textSize="24dp"
-            android:textStyle="bold"
-            android:layout_below="@id/time"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Name: "
-            android:textSize="14dp"
-            android:textColor="#5f4339"
             android:layout_below="@id/post_title"
-            android:textStyle="bold"/>
+            android:text="Name: "
+            android:textColor="#5f4339"
+            android:textSize="14dp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/fullname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Abu Ubaida Akash"
-            android:textSize="14dp"
-            android:textColor="#5f4339"
             android:layout_below="@id/post_title"
-            android:layout_toRightOf="@id/name"/>
+            android:layout_toRightOf="@id/name"
+            android:text="Abu Ubaida Akash"
+            android:textColor="#5f4339"
+            android:textSize="14dp" />
 
         <TextView
             android:id="@+id/fathername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Father's Name: "
-            android:textSize="14dp"
-            android:textColor="#5f4339"
             android:layout_below="@id/name"
-            android:textStyle="bold"/>
+            android:text="Father's Name: "
+            android:textColor="#5f4339"
+            android:textSize="14dp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/fatherfullname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Qamruzzaman"
-            android:textSize="14dp"
-            android:textColor="#5f4339"
             android:layout_below="@id/name"
-            android:layout_toRightOf="@id/fathername"/>
+            android:layout_toRightOf="@id/fathername"
+            android:text="Qamruzzaman"
+            android:textColor="#5f4339"
+            android:textSize="14dp" />
 
-         <!--<ImageView-->
-             <!--android:id="@+id/showLocation"-->
-             <!--android:layout_width="wrap_content"-->
-             <!--android:layout_height="wrap_content"-->
-             <!--android:src="@drawable/ic_action_showlocation"-->
-             <!--android:layout_marginLeft="5dp"-->
-             <!--android:layout_below="@id/title"-->
-             <!--android:layout_toLeftOf="@id/districtname"/>-->
+        <!--<ImageView-->
+        <!--android:id="@+id/showLocation"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:src="@drawable/ic_action_showlocation"-->
+        <!--android:layout_marginLeft="5dp"-->
+        <!--android:layout_below="@id/title"-->
+        <!--android:layout_toLeftOf="@id/districtname"/>-->
 
         <TextView
             android:id="@+id/district"
@@ -114,11 +115,11 @@
             android:id="@+id/districtname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/district"
             android:layout_below="@id/fathername"
+            android:layout_toRightOf="@id/district"
             android:text="Chapai Nawabganj"
             android:textColor="#5f4339"
-            android:textSize="14dp"/>
+            android:textSize="14dp" />
 
         <TextView
             android:id="@+id/rewardable"
@@ -134,37 +135,26 @@
             android:id="@+id/points"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="100 XP"
-            android:textSize="14dp"
-            android:textColor="#5f4339"
             android:layout_below="@id/district"
-            android:layout_toRightOf="@id/rewardable"/>
+            android:layout_toRightOf="@id/rewardable"
+            android:text="100 XP"
+            android:textColor="#5f4339"
+            android:textSize="14dp" />
 
-        <ImageView
-            android:id="@+id/star1"
+        <RatingBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_action_star"
-            android:layout_marginTop="8dp"
-            android:layout_below="@id/rewardable"/>
-
-        <ImageView
-            android:id="@+id/star2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_action_star"
-            android:layout_marginTop="8dp"
+            android:id="@+id/ratingBar"
+            style="?android:attr/ratingBarStyleIndicator"
+            android:scaleX=".5"
+            android:rating="4"
+            android:scaleY=".5"
+            android:transformPivotX="0dp"
+            android:transformPivotY="0dp"
+            android:max="5"
             android:layout_below="@id/rewardable"
-            android:layout_toRightOf="@id/star1"/>
+            android:src="@drawable/ic_action_star" />
 
-        <ImageView
-            android:id="@+id/star3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_action_star"
-            android:layout_marginTop="8dp"
-            android:layout_below="@id/rewardable"
-            android:layout_toRightOf="@id/star2"/>
 
     </RelativeLayout>
 
