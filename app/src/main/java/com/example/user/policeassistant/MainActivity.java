@@ -1,11 +1,13 @@
 package com.example.user.policeassistant;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -38,19 +40,22 @@ private int RadioSelect;
 
 
 
+
+
 public void SignIn(){
 
-    //sakhfksak
-    //Changed
 
 
-    String username=user.getText().toString().trim();
-    String pass=password.getText().toString().trim();
+    final String username=user.getText().toString().trim();
+     String pass=password.getText().toString().trim();
 
     firebaseAuth1.signInWithEmailAndPassword(username,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
         @Override
         public void onComplete(@NonNull Task<AuthResult> task) {
             if(task.isSuccessful()){
+
+
+
 
 
                 if(RadioSelect==1)
@@ -97,8 +102,6 @@ public void SignIn(){
         mDb=mDatabase.getReference();
         muser=firebaseAuth1.getCurrentUser();
         radioGroup=findViewById(R.id.RadioGroup);
-
-
 
 
 

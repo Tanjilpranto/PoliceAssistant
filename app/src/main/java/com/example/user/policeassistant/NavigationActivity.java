@@ -14,9 +14,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -24,11 +26,16 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class NavigationActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     Toolbar toolbar;
     DrawerLayout drawerLayout;
+    StorageReference storageReference;
     private FloatingActionButton fab2;
     private DatabaseReference mdatabase;
     private String SplitUsername;
@@ -50,6 +57,13 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         toolbar= findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         mdatabase=FirebaseDatabase.getInstance().getReference("Users");
+        storageReference= FirebaseStorage.getInstance().getReference();
+
+
+
+
+
+
 
         mdatabase.child(SplitUsername).child("Username").addValueEventListener(new ValueEventListener() {
             @Override
@@ -73,8 +87,14 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 
         TextView profilemail=header.findViewById(R.id.profileEmail);
 
+        CircleImageView proImage=header.findViewById(R.id.profileImage);
 
         profilemail.setText(email);
+
+
+        String url="https://firebasestorage.googleapis.com/v0/b/police-assistant-d85ca.appspot.com/o/toshib?alt=media&token=8e8f6a2b-e6b9-48a8-a3df-85071c52888c";
+
+        Glide.with(getApplicationContext()).load(url).into(proImage);
 
 
 
@@ -104,8 +124,6 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         TextView textviewUser=header.findViewById(R.id.profileUsername);
         textviewUser.setText(user);
     }
-
-
 
 
 
