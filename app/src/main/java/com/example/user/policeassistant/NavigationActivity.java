@@ -1,6 +1,8 @@
 package com.example.user.policeassistant;
 
 import android.content.Intent;
+import android.drm.DrmManagerClient;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -19,6 +21,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -35,10 +39,12 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 
     Toolbar toolbar;
     DrawerLayout drawerLayout;
-    StorageReference storageReference;
+    StorageReference storageRef;
     private FloatingActionButton fab2;
     private DatabaseReference mdatabase;
     private String SplitUsername;
+
+    public String ur;
 
     NavigationView navigationView;
     String Usernameprofile;
@@ -57,7 +63,9 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         toolbar= findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         mdatabase=FirebaseDatabase.getInstance().getReference("Users");
-        storageReference= FirebaseStorage.getInstance().getReference();
+        storageRef= FirebaseStorage.getInstance().getReference();
+
+
 
 
 
@@ -87,14 +95,27 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 
         TextView profilemail=header.findViewById(R.id.profileEmail);
 
-        CircleImageView proImage=header.findViewById(R.id.profileImage);
+        final CircleImageView proImage=header.findViewById(R.id.profileImage);
 
         profilemail.setText(email);
 
 
-        String url="https://firebasestorage.googleapis.com/v0/b/police-assistant-d85ca.appspot.com/o/toshib?alt=media&token=8e8f6a2b-e6b9-48a8-a3df-85071c52888c";
 
-        Glide.with(getApplicationContext()).load(url).into(proImage);
+        storageRef.child(SplitUsername).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                // Got the download URL for 'users/me/profile.png'
+                ur= uri.toString();
+                Glide.with(getApplicationContext()).load(ur).into(proImage);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle any errors
+            }
+        });
+
+
 
 
 
@@ -113,6 +134,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 
 
 
+
             }
         });
 
@@ -123,6 +145,11 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     {
         TextView textviewUser=header.findViewById(R.id.profileUsername);
         textviewUser.setText(user);
+    }
+
+    public void SetURL(String url)
+    {
+
     }
 
 
