@@ -113,7 +113,6 @@ public class SignupActivity extends AppCompatActivity {
 
 
 
-
         //When we press sing in button inside the sign up page
         SignupSignin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,8 +133,6 @@ public class SignupActivity extends AppCompatActivity {
 
                    SignUp();
                    upload();
-
-
 
 
                }catch (Exception e){

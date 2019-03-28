@@ -5,6 +5,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -14,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Phone"></activity>
+        <activity android:name=".Photo"></activity>
+        <activity android:name=".Phone" />
         <activity android:name=".NavigationActivity" />
         <activity android:name=".Gallery" />
         <activity android:name=".Recycle" />
@@ -29,6 +31,5 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".SignupActivity" />
     </application>
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
 
 </manifest>
