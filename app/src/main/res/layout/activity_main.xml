@@ -24,13 +24,15 @@
     <EditText
         android:id="@+id/usernameID"
         android:layout_width="300dp"
-        android:layout_height="35dp"
+        android:layout_height="40dp"
         android:background="@drawable/inputbox"
-        android:drawableLeft="@drawable/ic_action_name"
+        android:drawableLeft="@drawable/ic_action_email"
+        android:paddingLeft="8dp"
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:textColor="#5f4339"
-        android:textColorHint="#756B6A" />
+        android:textColorHint="#756B6A"
+        android:layout_marginTop="20dp"/>
 
 
     <android.support.design.widget.TextInputLayout
@@ -40,17 +42,14 @@
         app:passwordToggleContentDescription="password"
         app:passwordToggleEnabled="true"
         app:passwordToggleTint="@color/colorAccent"
-        android:paddingTop="10dp"
-
-
-        >
+        android:paddingTop="10dp">
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/passwordID"
             style="@style/Widget.AppCompat.EditText"
             android:layout_width="300dp"
-            android:layout_height="35dp"
-
+            android:layout_height="40dp"
+            android:paddingLeft="8dp"
             android:layout_gravity="center"
             android:background="@drawable/inputbox"
             android:drawableStart="@drawable/ic_action_password"
@@ -62,31 +61,34 @@
 
     </android.support.design.widget.TextInputLayout>
 
-
-    <RadioGroup
-        android:id="@+id/RadioGroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="5dp">
-
-        <RadioButton
-            android:id="@+id/RadioGen"
-            android:layout_width="wrap_content"
+        <RadioGroup
+            android:id="@+id/RadioGroup"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="57dp"
-            android:text="General"
-            android:textColor="#5f4339" />
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginLeft="60dp"
+            android:gravity="start">
 
-        <RadioButton
-            android:id="@+id/RadioAdmin"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="90dp"
-            android:text="Administration"
-            android:textColor="#5f4339" />
+            <RadioButton
+                android:id="@+id/RadioGen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="General"
+                android:textColor="#5f4339"/>
 
-    </RadioGroup>
+            <RadioButton
+                android:id="@+id/RadioAdmin"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Administration"
+                android:textColor="#5f4339"
+                android:layout_marginLeft="92dp"/>
+        </RadioGroup>
+
+
+
         <CheckBox
             android:id="@+id/checkbox"
             android:layout_width="wrap_content"
@@ -94,12 +96,13 @@
             android:layout_gravity="center"
             android:layout_marginRight="3dp"
             android:text="Keep me logged in"
-            android:textColor="#756B6A"
-            android:textSize="15dp"
+            android:textColor="#7A7271"
+            android:textSize="20dp"
             android:scaleX=".6"
             android:scaleY=".6"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="-5dp"/>
+            android:layout_marginBottom="-5dp"
+            android:layout_marginTop="-4dp"
+            android:layout_marginLeft="-82dp"/>
 
 
     <Button
@@ -108,8 +111,10 @@
         android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:text="SIGN IN"
+        android:textColor="#5f4339"
+        android:textStyle="bold"
         android:background="@drawable/signinbox"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="30dp"/>
 
     <Button
         android:id="@+id/forgotpass"
@@ -117,9 +122,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Forgot password?"
-        android:textColor="#756B6A"
+        android:textColor="#7A7271"
         android:textAllCaps="false"
-        android:textSize="15dp"
+        android:textSize="18dp"
         android:scaleX=".6"
         android:scaleY=".6"
         android:layout_marginTop="-5dp"/>
@@ -130,7 +135,9 @@
         android:layout_marginTop="50dp"
         android:text="Haven't you registered yet?"
         android:textColor="#5f4339"
-        android:textSize="13dp" />
+        android:textSize="13dp"
+        android:textStyle="italic"
+        android:layout_marginBottom="-5dp"/>
 
     <Button
         android:id="@+id/buttonSignupID"
@@ -138,6 +145,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SIGN UP"
+        android:textSize="13dp"
         android:textColor="#5f4339"
         android:textStyle="bold" />
 </LinearLayout>
