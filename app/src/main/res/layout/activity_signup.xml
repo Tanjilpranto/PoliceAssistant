@@ -64,7 +64,7 @@
         app:passwordToggleTint="@color/colorAccent"
         android:paddingTop="20dp"
         android:layout_weight="1">
-    <android.support.design.widget.TextInputEditText
+        <android.support.design.widget.TextInputEditText
             android:id="@+id/editTextPassword"
             style="@style/Widget.AppCompat.EditText"
             android:textColorHint="#756B6A"
@@ -78,7 +78,9 @@
             android:layout_gravity="center"
             android:drawableStart="@drawable/ic_action_password"
             android:hint="Password"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            android:background="@drawable/signupboxes"
+            android:paddingLeft="8dp"/>
     </android.support.design.widget.TextInputLayout>
 
 
@@ -93,8 +95,6 @@
         app:passwordToggleTint="@color/colorAccent"
         android:paddingTop="0dp"
         android:layout_weight="1">
-        app:passwordToggleTint="#5f4339"
-        android:paddingTop="10dp"
 
         <android.support.design.widget.TextInputEditText
             style="@style/Widget.AppCompat.EditText"
@@ -110,7 +110,9 @@
             android:drawableRight="@drawable/ic_action_visibility"
             android:hint="Confirm password"
             android:textColor="#5f4339"
-            android:textColorHint="#756B6A"/>
+            android:textColorHint="#756B6A"
+            android:background="@drawable/signupboxes"
+            android:paddingLeft="8dp"/>
     </android.support.design.widget.TextInputLayout>
 
 
