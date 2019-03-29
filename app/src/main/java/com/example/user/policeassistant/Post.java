@@ -134,13 +134,13 @@ public class Post extends AppCompatActivity {
                     Intent intent=new Intent(getApplicationContext(),Recycle.class);
                     startActivity(intent);
 
-                    EmailVerification();
+                    /*EmailVerification();
                     if(mFirebaseUser.isEmailVerified())
                     {
                         Toast.makeText(getApplicationContext(),"Email is Verified",Toast.LENGTH_SHORT).show();
                     }else {
                         Toast.makeText(getApplicationContext(),"Email is not Verified",Toast.LENGTH_SHORT).show();
-                    }
+                    }*/
 
 
 
