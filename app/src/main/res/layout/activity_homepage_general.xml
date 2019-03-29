@@ -1,46 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background2">
-    
+
     <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:id="@+id/toolbar"
         android:background="#8D6E63"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
     </android.support.v7.widget.Toolbar>
 
     <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="50dp"-->
-        <!--android:background="#FF021F22"-->
-        <!--android:orientation="horizontal">-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="50dp"-->
+    <!--android:background="#FF021F22"-->
+    <!--android:orientation="horizontal">-->
 
-        <!--<EditText-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:hint="search"-->
-            <!--android:layout_marginLeft="160dp"-->
-            <!--android:layout_gravity="center"-->
-            <!--android:textColor="#FFAEC8CC"-->
-            <!--android:textColorHint="#75989C"-->
-            <!--android:textSize="23dp"-->
-            <!--android:drawableLeft="@drawable/ic_action_search"-->
-            <!--android:background="#00000000"/>-->
+    <!--<EditText-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:hint="search"-->
+    <!--android:layout_marginLeft="160dp"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:textColor="#FFAEC8CC"-->
+    <!--android:textColorHint="#75989C"-->
+    <!--android:textSize="23dp"-->
+    <!--android:drawableLeft="@drawable/ic_action_search"-->
+    <!--android:background="#00000000"/>-->
     <!--</LinearLayout>-->
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_submit_post2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_margin="16dp"
-        android:src="@drawable/ic_navigation_check_24"/>
+        android:src="@drawable/ic_navigation_check_24" />
 
 </RelativeLayout>
