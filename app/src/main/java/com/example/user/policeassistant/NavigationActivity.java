@@ -44,6 +44,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     private DatabaseReference mdatabase;
     private String SplitUsername;
 
+
     public String ur;
 
     NavigationView navigationView;
@@ -64,14 +65,6 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         setSupportActionBar(toolbar);
         mdatabase=FirebaseDatabase.getInstance().getReference("Users");
         storageRef= FirebaseStorage.getInstance().getReference();
-
-
-
-
-
-
-
-
 
         mdatabase.child(SplitUsername).child("Username").addValueEventListener(new ValueEventListener() {
             @Override
