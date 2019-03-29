@@ -13,6 +13,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,7 +25,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
-
 private Button Signup;
 private Button Signin;
 private EditText user;
@@ -36,6 +36,9 @@ public static String obj;
 private RadioGroup radioGroup;
 private FirebaseUser muser;
 private int RadioSelect;
+private FirebaseAuth mFirebaseAuth;
+private FirebaseUser mFirebaseUser;
+private boolean value;
 
 
 
@@ -54,16 +57,38 @@ public void SignIn(){
         public void onComplete(@NonNull Task<AuthResult> task) {
             if(task.isSuccessful()){
 
-
-
-
-
                 if(RadioSelect==1)
                 {
                     Toast.makeText(MainActivity.this,"Logged In",Toast.LENGTH_SHORT).show();
-                    //Intent intent=new Intent(getApplicationContext(),Recycle.class);
                     Intent intent=new Intent(getApplicationContext(),NavigationActivity.class);
                     startActivity(intent);
+
+                    /*try{
+                        if(mFirebaseUser.isEmailVerified())
+                        {
+                            value=true;
+                            Intent intent=new Intent(getApplicationContext(),NavigationActivity.class);
+                            startActivity(intent);
+
+
+                        }else{
+                            value=false;
+                        }
+                        if(value==false)
+                        {
+                            //Toast.makeText(MainActivity.this,"Logged out",Toast.LENGTH_SHORT).show();
+                            EmailVerification();
+
+                        }
+
+
+
+
+                    }catch (Exception e)
+                    {
+                        Toast.makeText(MainActivity.this,e.getMessage().toString(),Toast.LENGTH_SHORT).show();
+                    }*/
+
                 }
                 else if(RadioSelect==2)
                 {
@@ -102,6 +127,9 @@ public void SignIn(){
         mDb=mDatabase.getReference();
         muser=firebaseAuth1.getCurrentUser();
         radioGroup=findViewById(R.id.RadioGroup);
+
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        mFirebaseUser = mFirebaseAuth.getCurrentUser();
 
 
 
@@ -156,14 +184,35 @@ public void SignIn(){
 
     }
 
+
+    public void EmailVerification()
+    {
+        mFirebaseUser.sendEmailVerification().addOnCompleteListener(this, new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                Toast.makeText(getApplicationContext(),"Please Verify Your Email.",Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getApplicationContext(),"Email send failed",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
+
     @Override
     public void onBackPressed()
     {
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
 
-
+        Intent a = new Intent(Intent.ACTION_MAIN);
+        a.addCategory(Intent.CATEGORY_HOME);
+        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(a);
+        finish();
     }
+
+
 
 }

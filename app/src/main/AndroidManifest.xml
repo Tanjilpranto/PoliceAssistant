@@ -16,10 +16,8 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".Rating"></activity>
-        <activity android:name=".Photo" />
         <activity android:name=".Phone" />
         <activity android:name=".NavigationActivity" />
-        <activity android:name=".Gallery" />
         <activity android:name=".Recycle" />
         <activity android:name=".Post" />
         <activity android:name=".SplashScreenActivity">

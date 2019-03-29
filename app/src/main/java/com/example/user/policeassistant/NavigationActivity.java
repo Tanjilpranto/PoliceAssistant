@@ -44,6 +44,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     private DatabaseReference mdatabase;
     private String SplitUsername;
 
+
     public String ur;
 
     NavigationView navigationView;
@@ -65,14 +66,6 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         mdatabase=FirebaseDatabase.getInstance().getReference("Users");
         storageRef= FirebaseStorage.getInstance().getReference();
 
-
-
-
-
-
-
-
-
         mdatabase.child(SplitUsername).child("Username").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -86,7 +79,6 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
             }
         });
 
-
         drawerLayout= findViewById(R.id.drawerlayout);
         navigationView= findViewById(R.id.navigationview);
         navigationView.setNavigationItemSelectedListener(this);
@@ -98,8 +90,6 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         final CircleImageView proImage=header.findViewById(R.id.profileImage);
 
         profilemail.setText(email);
-
-
 
         storageRef.child(SplitUsername).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
@@ -115,10 +105,6 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
             }
         });
 
-
-
-
-
         ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(this,drawerLayout,toolbar, R.string.open_drawer, R.string.close_drawer);
         drawerLayout.setDrawerListener(toggle);
         toggle.syncState();
@@ -130,15 +116,32 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                 Intent intent=new Intent(getApplicationContext(),Post.class);
                 startActivity(intent);
                 finish();
-
-
-
-
-
             }
         });
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.main_menu,menu);
 
+        MenuItem.OnActionExpandListener onActionExpandListener = new MenuItem.OnActionExpandListener() {
+            @Override
+            public boolean onMenuItemActionExpand(MenuItem item) {
+                //some work if wish
+                return true;
+            }
+
+            @Override
+            public boolean onMenuItemActionCollapse(MenuItem item) {
+                //some work if wish
+                return true;
+            }
+        };
+
+        MenuItem searchItem = menu.findItem(R.id.search);
+        searchItem.setOnActionExpandListener(onActionExpandListener);
+
+        return true;
     }
 
     public void setuser(String user)
@@ -150,16 +153,6 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     public void SetURL(String url)
     {
 
-    }
-
-
-
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu,menu);
-        return true;
     }
 
     @Override

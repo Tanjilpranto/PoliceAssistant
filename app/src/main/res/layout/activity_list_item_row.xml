@@ -147,7 +147,7 @@
             android:id="@+id/ratingBar"
             style="?android:attr/ratingBarStyleIndicator"
             android:scaleX=".5"
-            android:rating="4"
+            android:rating="3"
             android:scaleY=".5"
             android:transformPivotX="0dp"
             android:transformPivotY="0dp"

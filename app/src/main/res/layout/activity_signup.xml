@@ -62,19 +62,19 @@
         app:passwordToggleContentDescription="password"
         app:passwordToggleEnabled="true"
         app:passwordToggleTint="@color/colorAccent"
-        android:paddingTop="20dp"
+        android:paddingTop="15dp"
         android:layout_weight="1">
+
         <android.support.design.widget.TextInputEditText
             android:id="@+id/editTextPassword"
             style="@style/Widget.AppCompat.EditText"
             android:textColorHint="#756B6A"
-
             android:drawableLeft="@drawable/ic_action_password"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="0dp"
             android:layout_gravity="center"
             android:drawableStart="@drawable/ic_action_password"
             android:hint="Password"
@@ -94,7 +94,8 @@
         app:passwordToggleEnabled="true"
         app:passwordToggleTint="@color/colorAccent"
         android:paddingTop="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:layout_marginTop="-10dp">
 
         <android.support.design.widget.TextInputEditText
             style="@style/Widget.AppCompat.EditText"
@@ -105,6 +106,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
+            android:layout_marginBottom="20dp"
             android:layout_marginRight="30dp"
             android:drawableLeft="@drawable/ic_action_password"
             android:drawableRight="@drawable/ic_action_visibility"
@@ -127,7 +129,6 @@
         android:textColor="#5f4339"
         android:textColorHint="#756B6A"
         android:layout_weight="1"
-        android:layout_marginTop="-15dp"
         android:inputType="phone"
         android:background="@drawable/signupboxes"
         android:layout_marginBottom="15dp"
@@ -144,7 +145,6 @@
         android:layout_marginRight="30dp"
         android:drawableLeft="@drawable/ic_action_email"
         android:layout_weight="1"
-        android:inputType="textEmailAddress"
         android:background="@drawable/signupboxes"
         android:paddingLeft="8dp"/>
 

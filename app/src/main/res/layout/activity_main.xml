@@ -29,7 +29,6 @@
         android:drawableLeft="@drawable/ic_action_email"
         android:paddingLeft="8dp"
         android:hint="Email"
-        android:inputType="textEmailAddress"
         android:textColor="#5f4339"
         android:textColorHint="#756B6A"
         android:layout_marginTop="20dp"/>
