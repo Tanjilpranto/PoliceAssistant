@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/roundeditem"
-    android:layout_marginTop="8dp"
-    android:padding="16dp"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="195dp">
-    
+    android:layout_height="195dp"
+    android:layout_marginTop="8dp"
+    android:background="@drawable/roundeditem"
+    android:orientation="horizontal"
+    android:padding="16dp">
+
 
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/deafaultpic"/>
+        android:src="@drawable/deafaultpic" />
 
 
     <RelativeLayout
@@ -142,25 +142,21 @@
             android:textSize="14dp" />
 
         <RatingBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/ratingBar"
             style="?android:attr/ratingBarStyleIndicator"
-            android:scaleX=".5"
-            android:rating="3"
-            android:scaleY=".5"
-            android:transformPivotX="0dp"
-            android:transformPivotY="0dp"
-            android:max="5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_below="@id/rewardable"
-            android:src="@drawable/ic_action_star" />
+            android:max="5"
+            android:rating="3"
+            android:scaleX=".5"
+            android:scaleY=".5"
+            android:src="@drawable/ic_action_star"
+            android:transformPivotX="0dp"
+            android:transformPivotY="0dp" />
 
 
     </RelativeLayout>
-
-    
-
-
 
 
 </LinearLayout>
