@@ -156,20 +156,7 @@ public class Post extends AppCompatActivity {
 
         }
 
-        public void EmailVerification()
-        {
-            mFirebaseUser.sendEmailVerification().addOnCompleteListener(this, new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    Toast.makeText(getApplicationContext(),"Email send",Toast.LENGTH_SHORT).show();
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(getApplicationContext(),"Email send failed",Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
+
 
 
     public void onBackPressed(){
