@@ -4,9 +4,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,7 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
-public class Recycle extends AppCompatActivity {
+public class Recycle extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private RecyclerView mBloglist;
     private DatabaseReference mDatabase;
@@ -70,6 +73,18 @@ public class Recycle extends AppCompatActivity {
         mBloglist.setAdapter(firebaseRecyclerAdapter);
 
     }
+
+
+
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        return false;
+    }
+
+
+
+
 
     public static class BlogViewHolder extends RecyclerView.ViewHolder
     {

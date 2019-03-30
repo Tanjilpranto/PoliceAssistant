@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background2">
-    
+
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -15,24 +15,6 @@
 
     </android.support.v7.widget.Toolbar>
 
-    <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="50dp"-->
-        <!--android:background="#FF021F22"-->
-        <!--android:orientation="horizontal">-->
-
-        <!--<EditText-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:hint="search"-->
-            <!--android:layout_marginLeft="160dp"-->
-            <!--android:layout_gravity="center"-->
-            <!--android:textColor="#FFAEC8CC"-->
-            <!--android:textColorHint="#75989C"-->
-            <!--android:textSize="23dp"-->
-            <!--android:drawableLeft="@drawable/ic_action_search"-->
-            <!--android:background="#00000000"/>-->
-    <!--</LinearLayout>-->
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_submit_post2"
