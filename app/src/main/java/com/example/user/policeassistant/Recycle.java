@@ -30,7 +30,7 @@ public class Recycle extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recycle);
+        setContentView(R.layout.activity_navigation_drawer);
 
         mDatabase= FirebaseDatabase.getInstance().getReference("Posts");
         mDatabase.keepSynced(true);
