@@ -96,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/nameboxcrim"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="10dp"
                 android:text="Father's Name"
                 android:textColor="#5f4339"
                 android:textSize="18dp"
@@ -146,7 +146,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/nameboxmoth"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="10dp"
                 android:text="Present Address"
                 android:textColor="#5f4339"
                 android:textSize="18dp"
@@ -171,7 +171,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/nameboxpreadd"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="10dp"
                 android:text="Permanent Address"
                 android:textColor="#5f4339"
                 android:textSize="18dp"
@@ -196,7 +196,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/nameboxperadd"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="10dp"
                 android:text="Description"
                 android:textColor="#5f4339"
                 android:textSize="18dp"
@@ -284,7 +284,7 @@
             <RelativeLayout
                 android:id="@+id/commentsection"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_below="@id/announcement"
                 android:layout_margin="10dp"
                 android:background="@drawable/textboxborder">
@@ -296,10 +296,7 @@
                     android:background="@drawable/textbox"
                     android:hint="Send message...
 
-
-
-
-                                            "
+"
                     android:inputType="textMultiLine"
                     android:padding="10dp"
                     android:textColor="#000" />
