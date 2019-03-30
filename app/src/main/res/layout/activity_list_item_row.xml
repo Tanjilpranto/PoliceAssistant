@@ -32,7 +32,7 @@
             android:textSize="10dp" />
 
         <Button
-            android:id="@+id/saveText"
+            android:id="@+id/savePost"
             android:layout_width="78dp"
             android:layout_height="22dp"
             android:layout_alignParentTop="true"

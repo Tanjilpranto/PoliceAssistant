@@ -131,7 +131,7 @@ public class Post extends AppCompatActivity {
                     Name.setText("");
                     Father.setText("");
 
-                    Intent intent=new Intent(getApplicationContext(),Recycle.class);
+                    Intent intent=new Intent(getApplicationContext(),NavigationActivity.class);
                     startActivity(intent);
 
                     /*EmailVerification();
