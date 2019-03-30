@@ -29,7 +29,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                     if(user !=null)
                     {
-                        Intent intent=new Intent(getApplicationContext(),Recycle.class);
+                        Intent intent=new Intent(getApplicationContext(),NavigationActivity.class);
                         //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         finish();

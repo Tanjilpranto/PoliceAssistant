@@ -4,9 +4,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -14,12 +16,11 @@ import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
-public class Recycle extends AppCompatActivity {
+public class Recycle extends AppCompatActivity{
 
     private RecyclerView mBloglist;
     private DatabaseReference mDatabase;
@@ -30,7 +31,7 @@ public class Recycle extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_navigation_drawer);
+        setContentView(R.layout.activity_homepage_general);
 
         mDatabase= FirebaseDatabase.getInstance().getReference("Posts");
         mDatabase.keepSynced(true);
@@ -76,6 +77,7 @@ public class Recycle extends AppCompatActivity {
 
     }
 
+
     public static class BlogViewHolder extends RecyclerView.ViewHolder
     {
 
@@ -93,6 +95,13 @@ public class Recycle extends AppCompatActivity {
                     /*FirebaseAuth.getInstance().signOut();
                     Intent intent = new Intent(context, MainActivity.class);
                     context.startActivity(intent);*/
+                    try{
+                        //Toast.makeText(context,"Hello",Toast.LENGTH_SHORT).show();
+                    }catch(Exception e)
+                    {
+                        Toast.makeText(context,e.getMessage().toString(),Toast.LENGTH_SHORT).show();
+                    }
+
                 }
             });
 
