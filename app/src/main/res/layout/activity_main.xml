@@ -30,7 +30,8 @@
         android:hint="Email"
         android:paddingLeft="8dp"
         android:textColor="#5f4339"
-        android:textColorHint="#756B6A" />
+        android:textColorHint="#756B6A"
+        android:inputType="textEmailAddress"/>
 
 
     <android.support.design.widget.TextInputLayout
