@@ -17,13 +17,13 @@ public class SplashScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash_screen);
+        setContentView(R.layout.activity_post_expanded);
 
         Thread myThread=new Thread(){
             @Override
             public void run() {
                 try {
-                    sleep(2000);
+                    sleep(20000000);
 
 
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
