@@ -51,12 +51,9 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     private Button save;
     private DatabaseReference saveRefrence;
 
-<<<<<<< HEAD
-=======
     private RecyclerView mBloglist;
     private DatabaseReference mDatabase;
     private static Context context;
->>>>>>> Branch_pranto
 
     public String ur;
 
@@ -80,10 +77,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         storageRef= FirebaseStorage.getInstance().getReference();
         save=findViewById(R.id.savePost);
 
-<<<<<<< HEAD
-=======
 
->>>>>>> Branch_pranto
         mdatabase.child(SplitUsername).child("Username").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -97,8 +91,6 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
             }
         });
 
-<<<<<<< HEAD
-=======
        // View hg = getLayoutInflater().inflate(R.layout.activity_homepage_general, null);
         mDatabase= FirebaseDatabase.getInstance().getReference("Posts");
         mDatabase.keepSynced(true);
@@ -114,14 +106,13 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         context = this;
 
 
-        saveRefrence=FirebaseDatabase.getInstance().getReference("SavedPost");
+        //saveRefrence=FirebaseDatabase.getInstance().getReference("SavedPost");
 
->>>>>>> Branch_pranto
         drawerLayout= findViewById(R.id.drawerlayout);
         navigationView= findViewById(R.id.navigationview);
 
         navigationView.setNavigationItemSelectedListener(this);
-        //fab2=findViewById(R.id.fab_submit_post2);
+        fab2=findViewById(R.id.fab_submit_post2);
         header=navigationView.getHeaderView(0);
 
         TextView profilemail=header.findViewById(R.id.profileEmail);
@@ -129,6 +120,8 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         final CircleImageView proImage=header.findViewById(R.id.profileImage);
 
         profilemail.setText(email);
+
+
 
         storageRef.child(SplitUsername).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
@@ -144,18 +137,16 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
             }
         });
 
-<<<<<<< HEAD
-=======
 
 
-        save.setOnClickListener(new View.OnClickListener() {
+        /*save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 //saveRefrence.child(SplitUsername).setValue();
                 Toast.makeText(context,"Hello",Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
 
 
 
@@ -163,7 +154,6 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 
 
 
->>>>>>> Branch_pranto
         ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(this,drawerLayout,toolbar, R.string.open_drawer, R.string.close_drawer);
         drawerLayout.setDrawerListener(toggle);
         toggle.syncState();
@@ -175,35 +165,11 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                 Intent intent=new Intent(getApplicationContext(),Post.class);
                 startActivity(intent);
                 finish();
+
             }
         });
-    }
 
-<<<<<<< HEAD
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.main_menu,menu);
 
-        MenuItem.OnActionExpandListener onActionExpandListener = new MenuItem.OnActionExpandListener() {
-            @Override
-            public boolean onMenuItemActionExpand(MenuItem item) {
-                //some work if wish
-                return true;
-            }
-
-            @Override
-            public boolean onMenuItemActionCollapse(MenuItem item) {
-                //some work if wish
-                return true;
-=======
->>>>>>> Branch_pranto
-            }
-        };
-
-        MenuItem searchItem = menu.findItem(R.id.search);
-        searchItem.setOnActionExpandListener(onActionExpandListener);
-
-        return true;
     }
 
     @Override
@@ -294,9 +260,6 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     }
 
 
-
-
-
     public void setuser(String user)
     {
         TextView textviewUser=header.findViewById(R.id.profileUsername);
@@ -306,6 +269,16 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     public void SetURL(String url)
     {
 
+    }
+
+
+
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu,menu);
+        return true;
     }
 
     @Override
@@ -344,9 +317,9 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                 break;
             case R.id.rewards:
                 //some work.............................
-                Intent intent=new Intent(getApplicationContext(),Recycle.class);
+                /*Intent intent=new Intent(getApplicationContext(),Recycle.class);
                 startActivity(intent);
-                finish();
+                finish();*/
 
                 break;
             case R.id.settings:

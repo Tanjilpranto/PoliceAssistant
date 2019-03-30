@@ -10,7 +10,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,7 +26,6 @@ public class Recycle extends AppCompatActivity{
     private static Context context;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,14 +39,13 @@ public class Recycle extends AppCompatActivity{
         mLinearLayoutManager.setStackFromEnd(true);
 
         mBloglist=findViewById(R.id.recyclerId);
-
         mBloglist.setHasFixedSize(true);
         mBloglist.setLayoutManager(mLinearLayoutManager);
 
         context = this;
+
+
     }
-
-
 
     @Override
     protected void onStart() {
@@ -72,8 +69,6 @@ public class Recycle extends AppCompatActivity{
         };
 
         mBloglist.setAdapter(firebaseRecyclerAdapter);
-
-
 
     }
 
@@ -104,9 +99,6 @@ public class Recycle extends AppCompatActivity{
 
                 }
             });
-
-
-
         }
 
         public void setTitle(String title)
@@ -140,16 +132,6 @@ public class Recycle extends AppCompatActivity{
         }
 
 
-
     }
-
-    public void onBackPressed(){
-        Intent intent=new Intent(getApplicationContext(),NavigationActivity.class);
-        startActivity(intent);
-        finish();
-
-    }
-
-
 
 }

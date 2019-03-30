@@ -88,7 +88,6 @@ public class SignupActivity extends AppCompatActivity {
         EditTextPassword=findViewById(R.id.editTextPassword);
         EditTextPhone=findViewById(R.id.phoneID);
 
-
         firebaseAuth=FirebaseAuth.getInstance();
         pd = new ProgressDialog(this);
         pd.setMessage("Registering User..");
@@ -172,13 +171,9 @@ public class SignupActivity extends AppCompatActivity {
                     Repassword.setText("");
                     EditTextPhone.setText("");
 
-
-
                     Intent intent=new Intent(getApplicationContext(),SignupActivity.class);
                     startActivity(intent);
                     finish();
-                    Toast.makeText(getApplicationContext(), "Registration Successful", Toast.LENGTH_SHORT).show();
-
 
 
 
@@ -305,7 +300,6 @@ public class SignupActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 SaveToDatabase();
 
-
                             } else {
                                 if (task.getException() instanceof FirebaseAuthUserCollisionException) {
                                     Toast.makeText(getApplicationContext(), "Email already registered.", Toast.LENGTH_SHORT).show();
@@ -331,14 +325,6 @@ public class SignupActivity extends AppCompatActivity {
             Toast.makeText(SignupActivity.this,"Password Not Matched!",Toast.LENGTH_SHORT).show();
         }
 
-    }
-
-
-
-    public void onBackPressed(){
-        Intent intent=new Intent(getApplicationContext(),MainActivity.class);
-        startActivity(intent);
-        finish();
     }
 
 }
