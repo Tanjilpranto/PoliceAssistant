@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/homepagegeneral"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/background2">
+    android:layout_height="wrap_content">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -16,13 +16,6 @@
 
 
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_submit_post2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="16dp"
-        android:src="@drawable/ic_navigation_check_24" />
+
 
 </RelativeLayout>

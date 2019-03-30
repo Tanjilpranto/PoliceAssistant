@@ -9,7 +9,7 @@
     tools:openDrawer="start"
     >
 
-    <include layout="@layout/activity_homepage_general" />
+    <include layout="@layout/activity_recycle"/>
 
     <android.support.design.widget.NavigationView
         android:id="@+id/navigationview"
@@ -21,7 +21,9 @@
         app:headerLayout="@layout/activity_navigation_header"
         app:itemIconTint="#FFFF"
         app:itemTextColor="#FFFF"
-        app:menu="@menu/navigation_menu"></android.support.design.widget.NavigationView>
+        app:menu="@menu/navigation_menu">
+
+    </android.support.design.widget.NavigationView>
 
 
 

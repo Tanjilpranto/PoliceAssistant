@@ -82,7 +82,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         drawerLayout= findViewById(R.id.drawerlayout);
         navigationView= findViewById(R.id.navigationview);
         navigationView.setNavigationItemSelectedListener(this);
-        fab2=findViewById(R.id.fab_submit_post2);
+        //fab2=findViewById(R.id.fab_submit_post2);
         header=navigationView.getHeaderView(0);
 
         TextView profilemail=header.findViewById(R.id.profileEmail);
