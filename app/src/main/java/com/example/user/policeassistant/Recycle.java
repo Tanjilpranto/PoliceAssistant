@@ -4,8 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
+
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,12 +15,11 @@ import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
-public class Recycle extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class Recycle extends AppCompatActivity{
 
     private RecyclerView mBloglist;
     private DatabaseReference mDatabase;
@@ -31,7 +29,7 @@ public class Recycle extends AppCompatActivity implements NavigationView.OnNavig
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recycle);
+        setContentView(R.layout.activity_homepage_general);
 
         mDatabase= FirebaseDatabase.getInstance().getReference("Posts");
         mDatabase.keepSynced(true);
@@ -75,17 +73,6 @@ public class Recycle extends AppCompatActivity implements NavigationView.OnNavig
     }
 
 
-
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        return false;
-    }
-
-
-
-
-
     public static class BlogViewHolder extends RecyclerView.ViewHolder
     {
 
@@ -103,6 +90,13 @@ public class Recycle extends AppCompatActivity implements NavigationView.OnNavig
                     /*FirebaseAuth.getInstance().signOut();
                     Intent intent = new Intent(context, MainActivity.class);
                     context.startActivity(intent);*/
+                    try{
+                        //Toast.makeText(context,"Hello",Toast.LENGTH_SHORT).show();
+                    }catch(Exception e)
+                    {
+                        Toast.makeText(context,e.getMessage().toString(),Toast.LENGTH_SHORT).show();
+                    }
+
                 }
             });
         }
