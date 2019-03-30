@@ -295,7 +295,6 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/textbox"
                     android:hint="Send message...
-
 "
                     android:inputType="textMultiLine"
                     android:padding="10dp"
