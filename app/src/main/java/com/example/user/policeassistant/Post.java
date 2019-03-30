@@ -123,8 +123,10 @@ public class Post extends AppCompatActivity {
                     title.setText("");
                     body.setText("");
                     dist.setText("");
+                    Name.setText("");
+                    Father.setText("");
 
-                    Intent intent=new Intent(getApplicationContext(),Recycle.class);
+                    Intent intent=new Intent(getApplicationContext(),NavigationActivity.class);
                     startActivity(intent);
 
                    /* FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();

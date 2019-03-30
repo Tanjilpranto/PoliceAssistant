@@ -19,6 +19,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,6 +48,8 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     private FloatingActionButton fab2;
     private DatabaseReference mdatabase;
     private String SplitUsername;
+    private Button save;
+    private DatabaseReference saveRefrence;
 
     private RecyclerView mBloglist;
     private DatabaseReference mDatabase;
@@ -72,6 +75,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         setSupportActionBar(toolbar);
         mdatabase=FirebaseDatabase.getInstance().getReference("Users");
         storageRef= FirebaseStorage.getInstance().getReference();
+        save=findViewById(R.id.savePost);
 
 
         mdatabase.child(SplitUsername).child("Username").addValueEventListener(new ValueEventListener() {
@@ -102,12 +106,11 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         context = this;
 
 
-
-
-
+        saveRefrence=FirebaseDatabase.getInstance().getReference("SavedPost");
 
         drawerLayout= findViewById(R.id.drawerlayout);
         navigationView= findViewById(R.id.navigationview);
+
         navigationView.setNavigationItemSelectedListener(this);
         fab2=findViewById(R.id.fab_submit_post2);
         header=navigationView.getHeaderView(0);
@@ -136,6 +139,20 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 
 
 
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //saveRefrence.child(SplitUsername).setValue();
+                Toast.makeText(context,"Hello",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
+
+
+
 
         ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(this,drawerLayout,toolbar, R.string.open_drawer, R.string.close_drawer);
         drawerLayout.setDrawerListener(toggle);
@@ -148,10 +165,6 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                 Intent intent=new Intent(getApplicationContext(),Post.class);
                 startActivity(intent);
                 finish();
-
-
-
-
 
             }
         });

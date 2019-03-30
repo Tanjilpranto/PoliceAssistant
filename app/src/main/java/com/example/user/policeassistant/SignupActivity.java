@@ -56,6 +56,7 @@ public class SignupActivity extends AppCompatActivity {
     Uri pickedImageUri;
 
     FirebaseStorage storage = FirebaseStorage.getInstance();
+
     StorageReference storageRef = storage.getReferenceFromUrl("gs://police-assistant-d85ca.appspot.com/");
 
 

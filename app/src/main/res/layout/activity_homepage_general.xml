@@ -29,7 +29,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_submit_post2"
         android:layout_width="wrap_content"
@@ -39,8 +38,5 @@
         android:layout_margin="16dp"
         android:layout_gravity="bottom"
         android:src="@drawable/ic_navigation_check_24"/>
-
-
-
 
 </android.support.design.widget.CoordinatorLayout>

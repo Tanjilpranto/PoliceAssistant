@@ -29,7 +29,7 @@
             android:textColor="#8D6E63"/>
 
         <Button
-            android:id="@+id/saveText"
+            android:id="@+id/savePost"
             android:layout_width="78dp"
             android:layout_height="22dp"
             android:layout_alignParentRight="true"
