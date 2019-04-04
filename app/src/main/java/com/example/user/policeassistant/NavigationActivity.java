@@ -212,15 +212,10 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 
                     //item onclick here
 
-                    /*FirebaseAuth.getInstance().signOut();
-                    Intent intent = new Intent(context, MainActivity.class);
-                    context.startActivity(intent);*/
-                    try{
-                        Toast.makeText(context,"Hello",Toast.LENGTH_SHORT).show();
-                    }catch(Exception e)
-                    {
-                        Toast.makeText(context,e.getMessage().toString(),Toast.LENGTH_SHORT).show();
-                    }
+
+                    Intent intent = new Intent(context, PostExpanded.class);
+                    context.startActivity(intent);
+                    
 
                 }
             });
@@ -266,10 +261,6 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         textviewUser.setText(user);
     }
 
-    public void SetURL(String url)
-    {
-
-    }
 
 
 
