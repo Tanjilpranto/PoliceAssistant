@@ -106,7 +106,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         context = this;
 
 
-        saveRefrence=FirebaseDatabase.getInstance().getReference("SavedPost");
+        //saveRefrence=FirebaseDatabase.getInstance().getReference("SavedPost");
 
         drawerLayout= findViewById(R.id.drawerlayout);
         navigationView= findViewById(R.id.navigationview);
@@ -139,14 +139,14 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 
 
 
-        save.setOnClickListener(new View.OnClickListener() {
+        /*save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 //saveRefrence.child(SplitUsername).setValue();
                 Toast.makeText(context,"Hello",Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
 
 
 
@@ -260,9 +260,6 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     }
 
 
-
-
-
     public void setuser(String user)
     {
         TextView textviewUser=header.findViewById(R.id.profileUsername);
@@ -320,9 +317,9 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                 break;
             case R.id.rewards:
                 //some work.............................
-                Intent intent=new Intent(getApplicationContext(),Recycle.class);
+                /*Intent intent=new Intent(getApplicationContext(),Recycle.class);
                 startActivity(intent);
-                finish();
+                finish();*/
 
                 break;
             case R.id.settings:
