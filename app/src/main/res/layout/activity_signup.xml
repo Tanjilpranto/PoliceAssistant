@@ -141,7 +141,8 @@
         android:paddingLeft="8dp"
         android:textColor="#043f45"
         android:textColorHint="#756B6A"
-        android:inputType="textEmailAddress"/>
+        android:inputType="textEmailAddress"
+       />
 
     <LinearLayout
         android:layout_width="match_parent"

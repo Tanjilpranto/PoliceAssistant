@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
@@ -24,19 +24,84 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|enterAlways" />
+            android:background="#5f4339"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
     </android.support.design.widget.AppBarLayout>
 
+    <android.support.design.bottomappbar.BottomAppBar
+        android:id="@+id/bottomnavbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:fabAlignmentMode="end"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_submit_post2"
+        android:id="@+id/fabbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="16dp"
-        android:layout_gravity="bottom"
-        android:src="@drawable/ic_navigation_check_24"/>
+        android:backgroundTint="#341c13"
+        android:src="@drawable/ic_action_navbutton_plus"
+        app:layout_anchor="@id/bottomnavbar" />
+
+    <!--<android.support.design.widget.FloatingActionButton-->
+    <!--android:id="@+id/fabbutton"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="bottom"-->
+    <!--android:layout_margin="16dp"-->
+    <!--android:src="@drawable/ic_navigation_check_24" />-->
+
+    <!--<RelativeLayout-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content">-->
+
+    <!--<com.getbase.floatingactionbutton.FloatingActionsMenu-->
+    <!--android:id="@+id/fabbutton"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--app:fab_addButtonColorNormal="#341c13"-->
+    <!--app:fab_addButtonColorPressed="#341c13"-->
+    <!--app:fab_addButtonPlusIconColor="#fff"-->
+    <!--app:fab_labelStyle="@style/fabMenu"></com.getbase.floatingactionbutton.FloatingActionsMenu>-->
+
+    <!--<android.support.design.widget.FloatingActionButton-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--app:fab_colorNormal="#fff"-->
+    <!--app:fab_colorPressed="#fff"-->
+    <!--app:fab_size="mini"-->
+    <!--app:fab_icon="@drawable/ic_action_post"-->
+    <!--android:id="@+id/fabmenupost"-->
+    <!--app:fab_title="Post"/>-->
+
+    <!--<android.support.design.widget.FloatingActionButton-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--app:fab_colorNormal="#fff"-->
+    <!--app:fab_colorPressed="#fff"-->
+    <!--app:fab_size="mini"-->
+    <!--app:fab_icon="@drawable/ic_action_post"-->
+    <!--android:id="@+id/fabmenu"-->
+    <!--app:fab_title="Post"/>-->
+
+    <!--<android.support.design.widget.FloatingActionButton-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--app:fab_colorNormal="#fff"-->
+    <!--app:fab_colorPressed="#fff"-->
+    <!--app:fab_size="mini"-->
+    <!--app:fab_icon="@drawable/ic_action_post"-->
+    <!--android:id="@+id/fabmenupost"-->
+    <!--app:fab_title="Post"/>-->
+
+    <!--</RelativeLayout>-->
 
 </android.support.design.widget.CoordinatorLayout>

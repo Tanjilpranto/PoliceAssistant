@@ -2,13 +2,14 @@ package com.example.user.policeassistant;
 
 import android.content.Context;
 import android.content.Intent;
-import android.drm.DrmManagerClient;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.bottomappbar.BottomAppBar;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -20,7 +21,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,6 +56,10 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     private static Context context;
 
     public String ur;
+    public static int Itemposition;
+
+    private BottomAppBar bottomAppBar;
+    private FloatingActionButton fab;
 
     NavigationView navigationView;
     String Usernameprofile;
@@ -65,6 +69,35 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer);
+        fab = findViewById(R.id.fabbutton);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //some works
+            }
+        });
+
+        bottomAppBar = findViewById(R.id.bottomnavbar);
+        bottomAppBar.replaceMenu(R.menu.bottomnavmenu);
+        bottomAppBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.messages:
+                        //some works
+                        break;
+                    case R.id.calls:
+                        //some works
+                        break;
+                    case R.id.notifications:
+                        //some works
+                        break;
+                }
+                return true;
+            }
+        });
+
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String email = user.getEmail();
 
@@ -112,7 +145,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         navigationView= findViewById(R.id.navigationview);
 
         navigationView.setNavigationItemSelectedListener(this);
-        fab2=findViewById(R.id.fab_submit_post2);
+        //fab2=findViewById(R.id.fab_submit_post2);
         header=navigationView.getHeaderView(0);
 
         TextView profilemail=header.findViewById(R.id.profileEmail);
@@ -159,7 +192,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         toggle.syncState();
 
 
-        fab2.setOnClickListener(new View.OnClickListener() {
+        /*fab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(getApplicationContext(),Post.class);
@@ -167,7 +200,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                 finish();
 
             }
-        });
+        });*/
 
 
     }
@@ -180,7 +213,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                 (Blog.class,R.layout.activity_list_item_row, NavigationActivity.BlogViewHolder.class,mDatabase){
 
             @Override
-            protected void populateViewHolder(NavigationActivity.BlogViewHolder viewHolder, Blog model, int position) {
+            protected void populateViewHolder(NavigationActivity.BlogViewHolder viewHolder, final Blog model, int position) {
                 viewHolder.setTitle(model.getTitle());
                 //viewHolder.setDesc(model.getDescription());
                 //viewHolder.setRewardable(model.getReward());
@@ -188,6 +221,20 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                 viewHolder.setname(model.getName());
                 viewHolder.setFather(model.getFather());
                 viewHolder.setRewards(model.getReward());
+                viewHolder.mview.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                       // Toast.makeText(getApplicationContext(),"Hello",Toast.LENGTH_SHORT).show();
+                        Intent intent=new Intent(context,PostExpand.class);
+                        intent.putExtra("name",model.getName());
+                        //intent.putExtra("father",model.getFather());
+                        //intent.putExtra("dist",model.getDist());
+                        //intent.putExtra("description",model.getDescription());
+
+                        context.startActivity(intent);
+                    }
+                });
 
             }
 
@@ -202,7 +249,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     {
 
         View mview;
-        public BlogViewHolder( View itemView)
+        public BlogViewHolder(final View itemView)
         {
             super(itemView);
             mview=itemView;
@@ -210,12 +257,11 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                 @Override
                 public void onClick(View v) {
 
-                    //item onclick here
+                    //Itemposition=getAdapterPosition();
+                    //Intent intent=new Intent(context,PostExpanded.class);
+                    //context.startActivity(intent);
 
 
-                    Intent intent = new Intent(context, PostExpanded.class);
-                    context.startActivity(intent);
-                    
 
                 }
             });
@@ -237,6 +283,8 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         {
             TextView post_name=mview.findViewById(R.id.fullname);
             post_name.setText(name);
+
+
         }
 
         public void setFather(String father)
@@ -255,15 +303,14 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     }
 
 
+
+
+
     public void setuser(String user)
     {
         TextView textviewUser=header.findViewById(R.id.profileUsername);
         textviewUser.setText(user);
     }
-
-
-
-
 
 
     @Override

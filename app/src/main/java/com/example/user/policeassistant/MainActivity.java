@@ -39,9 +39,6 @@ private int RadioSelect;
 
 
 
-
-
-
 public void SignIn(){
 
 
@@ -53,20 +50,24 @@ public void SignIn(){
         @Override
         public void onComplete(@NonNull Task<AuthResult> task) {
             if(task.isSuccessful()){
-
-
-
-
-
                 if(RadioSelect==1)
                 {
-                    Toast.makeText(MainActivity.this,"Logged In",Toast.LENGTH_SHORT).show();
-                    //Intent intent=new Intent(getApplicationContext(),Recycle.class);
-                    Intent intent=new Intent(getApplicationContext(),NavigationActivity.class);
-                    startActivity(intent);
+                    FirebaseUser User=firebaseAuth.getCurrentUser();
+                    if(User.isEmailVerified()){
+                        Toast.makeText(MainActivity.this,"Logged In",Toast.LENGTH_SHORT).show();
+                        Intent intent=new Intent(getApplicationContext(),NavigationActivity.class);
+                        startActivity(intent);
+                    }
+                    else {
+                        Toast.makeText(MainActivity.this,"Please Verify Your Email",Toast.LENGTH_SHORT).show();
+                    }
+
+
                 }
                 else if(RadioSelect==2)
                 {
+
+                    Toast.makeText(MainActivity.this,username,Toast.LENGTH_SHORT).show();
 
                     /*Toast.makeText(MainActivity.this,"Logged In",Toast.LENGTH_SHORT).show();
                     Intent intent=new Intent(getApplicationContext(),SignupActivity.class);
@@ -85,6 +86,7 @@ public void SignIn(){
     });
 
 }
+    public static FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,6 +104,9 @@ public void SignIn(){
         mDb=mDatabase.getReference();
         muser=firebaseAuth1.getCurrentUser();
         radioGroup=findViewById(R.id.RadioGroup);
+        firebaseAuth=FirebaseAuth.getInstance();
+
+
 
 
 
@@ -125,6 +130,7 @@ public void SignIn(){
             public void onClick(View v) {
 
                 try {
+
 
                     SignIn();
 
@@ -155,6 +161,11 @@ public void SignIn(){
 
 
     }
+
+
+
+
+
 
     @Override
     public void onBackPressed()

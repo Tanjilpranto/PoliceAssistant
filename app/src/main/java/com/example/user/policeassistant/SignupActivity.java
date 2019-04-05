@@ -50,6 +50,8 @@ public class SignupActivity extends AppCompatActivity {
     private DatabaseReference reference;
     private String SplitEmail;
 
+
+
     static int PReqCode=1;
     static int REQUESCODE=1;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -89,6 +91,7 @@ public class SignupActivity extends AppCompatActivity {
         EditTextPhone=findViewById(R.id.phoneID);
 
         firebaseAuth=FirebaseAuth.getInstance();
+
         pd = new ProgressDialog(this);
         pd.setMessage("Registering User..");
 
@@ -161,6 +164,7 @@ public class SignupActivity extends AppCompatActivity {
             uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    Toast.makeText(getApplicationContext(),"Registration Successful!!Verification Email Send",Toast.LENGTH_LONG).show();
                     pd.dismiss();
 
                     EditTextFullname.setText("");
@@ -271,10 +275,6 @@ public class SignupActivity extends AppCompatActivity {
 
         reference.child(SplitEmail).setValue(information);
 
-
-
-
-
     }
 
 //The whole signup function here.It will save email & password to firebase auth
@@ -299,6 +299,18 @@ public class SignupActivity extends AppCompatActivity {
 
                             if (task.isSuccessful()) {
                                 SaveToDatabase();
+                                firebaseAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                       // Toast.makeText(getApplicationContext(),"Registration Successful!!Verification Email Send",Toast.LENGTH_LONG).show();
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(getApplicationContext(),"Email Sending Failed",Toast.LENGTH_LONG).show();
+                                    }
+                                });
+
 
                             } else {
                                 if (task.getException() instanceof FirebaseAuthUserCollisionException) {

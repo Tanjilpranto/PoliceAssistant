@@ -14,11 +14,6 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
-
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +36,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
                     }
                     if(user==null) {
-                        //Toast.makeText(SplashScreenActivity.this,"Not Logged In",Toast.LENGTH_SHORT).show();
+
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);
                         finish();
