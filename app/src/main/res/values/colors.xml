@@ -12,5 +12,8 @@
     <color name="gradStart">#63C9FF</color>
     <color name="followersBg">#65DCE5</color>
     <color name="followingBg">#49BEFF</color>
-    <color name="white">#fff</color>
+    <color name="light">#8d6e63</color>
+    <color name="primary">#5f4339</color>
+    <color name="dark">#341c13</color>
+    <color name="background_secondary">#FFF5EE</color>
 </resources>

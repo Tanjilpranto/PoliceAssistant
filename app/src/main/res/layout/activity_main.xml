@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background2"
+    android:background="@drawable/background_primary"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".MainActivity">
@@ -75,7 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="General"
-            android:textColor="#5f4339" />
+            android:textColor="#341c13" />
 
         <RadioButton
             android:id="@+id/RadioAdmin"
@@ -83,7 +83,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="92dp"
             android:text="Administration"
-            android:textColor="#5f4339" />
+            android:textColor="#341c13" />
     </RadioGroup>
 
 
@@ -92,15 +92,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginLeft="-82dp"
+        android:layout_marginLeft="-80dp"
         android:layout_marginTop="-4dp"
         android:layout_marginRight="3dp"
         android:layout_marginBottom="-5dp"
         android:scaleX=".6"
         android:scaleY=".6"
         android:text="Keep me logged in"
-        android:textColor="#7A7271"
-        android:textSize="20dp" />
+        android:textColor="#341c13"
+        android:textSize="21dp"/>
 
 
     <Button
@@ -111,8 +111,8 @@
         android:layout_marginTop="30dp"
         android:background="@drawable/signinbox"
         android:text="SIGN IN"
-        android:textColor="#5f4339"
-        android:textStyle="bold" />
+        android:textColor="#341c13"
+        android:textStyle="bold"/>
 
     <Button
         android:id="@+id/forgotpass"
@@ -124,7 +124,7 @@
         android:scaleY=".6"
         android:text="Forgot password?"
         android:textAllCaps="false"
-        android:textColor="#7A7271"
+        android:textColor="#341c13"
         android:textSize="18dp" />
 
     <TextView
@@ -133,7 +133,7 @@
         android:layout_marginTop="50dp"
         android:layout_marginBottom="-5dp"
         android:text="Haven't you registered yet?"
-        android:textColor="#5f4339"
+        android:textColor="#341c13"
         android:textSize="13dp"
         android:textStyle="italic" />
 
@@ -143,7 +143,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SIGN UP"
-        android:textColor="#5f4339"
+        android:textColor="#341c13"
         android:textSize="13dp"
         android:textStyle="bold" />
 </LinearLayout>
