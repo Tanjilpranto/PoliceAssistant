@@ -89,7 +89,8 @@
                 android:padding="5dp"
                 android:textColor="@color/primary"
                 android:textSize="17dp"
-                android:typeface="monospace"/>
+                android:typeface="monospace"
+                android:hint="Type of complain"/>
 
             <TextView
                 android:id="@+id/criminaltext"
