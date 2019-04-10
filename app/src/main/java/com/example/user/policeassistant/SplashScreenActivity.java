@@ -17,19 +17,19 @@ public class SplashScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_post_form);
+        setContentView(R.layout.activity_splash_screen);
 
         Thread myThread=new Thread(){
             @Override
             public void run() {
                 try {
-                    sleep(20000000);
+                    sleep(2000);
 
 
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                     if(user !=null)
                     {
-                        Intent intent=new Intent(getApplicationContext(),MainActivity.class);
+                        Intent intent=new Intent(getApplicationContext(),NavigationActivity.class);
                         //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         finish();

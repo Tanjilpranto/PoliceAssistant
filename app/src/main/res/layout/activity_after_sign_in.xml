@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Post">
+
+
 
 
     <EditText
@@ -60,6 +62,17 @@
         android:maxLines="12"
         android:scrollHorizontally="false" />
 
+    <ImageView
+        android:id="@+id/imgPost"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/userphoto"
+
+        />
+
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_submit_post"
@@ -71,4 +84,5 @@
         android:src="@drawable/ic_navigation_check_24" />
 
 
-</RelativeLayout>
+
+</LinearLayout>

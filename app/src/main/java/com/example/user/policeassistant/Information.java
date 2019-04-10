@@ -8,8 +8,7 @@ public class Information {
 
 
 
-    public  String date;
-    public String Title,Description,Dist,Name,Father,reward;
+    public String Title,CriminalsName,FathersName,MothersName,PresentAdd,PermanentAdd,Description,Rewards,Date;
 
     public String FullName,Password,Username,Email,District,Phone;
 
@@ -17,15 +16,18 @@ public class Information {
 
     }
 
-    public Information(String Title, String Description,String District,String name,String date,String father,String reward)
+    public Information(String Title,String CriminalsName,String FathersName,String MothersName,String PresentAddress,String PermanentAddress,String Description,String rewards,String mydate)
     {
         this.Title=Title;
+        this.CriminalsName=CriminalsName;
+        this.FathersName=FathersName;
+        this.MothersName=MothersName;
+        this.PresentAdd=PresentAddress;
+        this.PermanentAdd=PermanentAddress;
         this.Description=Description;
-        this.Dist=District;
-        this.Name=name;
-        this.date=date;
-        this.Father=father;
-        this.reward=reward;
+        this.Rewards=rewards;
+        this.Date=mydate;
+
 
     }
 

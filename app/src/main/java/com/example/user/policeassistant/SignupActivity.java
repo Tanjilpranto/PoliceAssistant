@@ -95,11 +95,6 @@ public class SignupActivity extends AppCompatActivity {
         pd = new ProgressDialog(this);
         pd.setMessage("Registering User..");
 
-
-
-
-
-
         uploadImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,11 +108,6 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
-        //When we press sing in button inside the sign up page
         SignupSignin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -126,9 +116,7 @@ public class SignupActivity extends AppCompatActivity {
                 startActivity(intent);
                 SignupActivity.this.finish();
             }
-        });  //end
-
-        //when we press signup button inside signup page
+        });
 
         SignupSignup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,7 +131,7 @@ public class SignupActivity extends AppCompatActivity {
                    Toast.makeText(getApplicationContext(),e.getMessage().toString(),Toast.LENGTH_SHORT).show();
                }
             }
-        }); //end
+        });
 
     }
 
@@ -179,8 +167,6 @@ public class SignupActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
 
-
-
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -194,11 +180,6 @@ public class SignupActivity extends AppCompatActivity {
 
         }
     }
-
-
-
-
-
 
     //Upload Image
 

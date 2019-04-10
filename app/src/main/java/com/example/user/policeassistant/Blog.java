@@ -4,61 +4,64 @@ public class Blog {
 
     private String Title;
     private String Description;
-    private String Dist;
-    private String Reward;
-    private String Name;
-    private String Father;
+    private String PresentAdd;
+    private String Rewards;
+    private String CriminalsName;
+    private String FathersName;
+    private String MothersName;
+    private String PermanentAdd;
 
 
-    public Blog(String title, String description, String dist, String reward,String name,String father) {
+    public Blog(String title, String description, String presentAddress, String reward,String name,String father,String mother,String permanentAdd) {
         Title = title;
         Description = description;
-        Dist = dist;
-        Reward = reward;
-        Name=name;
-        Father=father;
+        PresentAdd = presentAddress;
+        Rewards = reward;
+        CriminalsName=name;
+        FathersName=father;
+        MothersName=mother;
+        PermanentAdd=permanentAdd;
+
     }
 
     public String getTitle() {
         return Title;
     }
 
-    public String getName() {
-        return Name;
+    public String getCriminalsName() {
+        return CriminalsName;
     }
 
-    public String getFather() {
-        return Father;
+    public String getFathersName() {
+        return FathersName;
     }
 
-
-    public void setTitle(String title) {
-        Title = title;
+    public String getMothersName()
+    {
+        return MothersName;
     }
+
+    public String getPermanentAdd()
+    {
+        return PermanentAdd;
+    }
+
 
     public String getDescription() {
         return Description;
     }
 
-    public void setDescription(String description) {
-        Description = description;
+
+
+    public String getPresentAdd() {
+        return PresentAdd;
+    }
+    public String getRewards()
+    {
+        return Rewards;
     }
 
-    public String getDist() {
-        return Dist;
-    }
 
-    public void setDist(String dist) {
-        Dist = dist;
-    }
-
-    public String getReward() {
-        return Reward;
-    }
-
-    public void setReward(String reward) {
-        Reward = reward;
-    }
 
     public Blog(){
 

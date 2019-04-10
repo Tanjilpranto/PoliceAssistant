@@ -21,6 +21,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,7 +46,8 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     Toolbar toolbar;
     DrawerLayout drawerLayout;
     StorageReference storageRef;
-    private FloatingActionButton fab2;
+    StorageReference Dref;
+    private FloatingActionButton fabNavigation;
     private DatabaseReference mdatabase;
     private String SplitUsername;
     private Button save;
@@ -98,6 +100,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         });
 
 
+        Dref=FirebaseStorage.getInstance().getReference("postImage");
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String email = user.getEmail();
 
@@ -111,11 +114,12 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         save=findViewById(R.id.savePost);
 
 
+
         mdatabase.child(SplitUsername).child("Username").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Usernameprofile=dataSnapshot.getValue().toString();
-                setuser(Usernameprofile);
+                setUsername(Usernameprofile);
             }
 
             @Override
@@ -136,6 +140,8 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         mBloglist.setHasFixedSize(true);
         mBloglist.setLayoutManager(mLinearLayoutManager);
 
+        final ImageView im=findViewById(R.id.postImage);
+
         context = this;
 
 
@@ -145,7 +151,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         navigationView= findViewById(R.id.navigationview);
 
         navigationView.setNavigationItemSelectedListener(this);
-        //fab2=findViewById(R.id.fab_submit_post2);
+        fabNavigation=findViewById(R.id.fabbutton);
         header=navigationView.getHeaderView(0);
 
         TextView profilemail=header.findViewById(R.id.profileEmail);
@@ -172,27 +178,13 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 
 
 
-        /*save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                //saveRefrence.child(SplitUsername).setValue();
-                Toast.makeText(context,"Hello",Toast.LENGTH_SHORT).show();
-            }
-        });*/
-
-
-
-
-
-
 
         ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(this,drawerLayout,toolbar, R.string.open_drawer, R.string.close_drawer);
         drawerLayout.setDrawerListener(toggle);
         toggle.syncState();
 
 
-        /*fab2.setOnClickListener(new View.OnClickListener() {
+        fabNavigation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(getApplicationContext(),Post.class);
@@ -200,7 +192,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                 finish();
 
             }
-        });*/
+        });
 
 
     }
@@ -215,22 +207,22 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
             @Override
             protected void populateViewHolder(NavigationActivity.BlogViewHolder viewHolder, final Blog model, int position) {
                 viewHolder.setTitle(model.getTitle());
-                //viewHolder.setDesc(model.getDescription());
-                //viewHolder.setRewardable(model.getReward());
-                viewHolder.setDist(model.getDist());
-                viewHolder.setname(model.getName());
-                viewHolder.setFather(model.getFather());
-                viewHolder.setRewards(model.getReward());
+                viewHolder.setCriminalsName(model.getCriminalsName());
+                viewHolder.setFathersName(model.getFathersName());
+                viewHolder.setPresentAdd(model.getPresentAdd());
+                viewHolder.setRewards(model.getRewards());
                 viewHolder.mview.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 
-                       // Toast.makeText(getApplicationContext(),"Hello",Toast.LENGTH_SHORT).show();
                         Intent intent=new Intent(context,PostExpand.class);
-                        intent.putExtra("name",model.getName());
-                        //intent.putExtra("father",model.getFather());
-                        //intent.putExtra("dist",model.getDist());
-                        //intent.putExtra("description",model.getDescription());
+                        intent.putExtra("name",model.getCriminalsName());
+                        intent.putExtra("father",model.getFathersName());
+                        intent.putExtra("PresentAddress",model.getPresentAdd());
+                        intent.putExtra("Description",model.getDescription());
+                        intent.putExtra("mother",model.getMothersName());
+                        intent.putExtra("PermanentAddress",model.getPermanentAdd());
+                        intent.putExtra("rewards",model.getRewards());
 
                         context.startActivity(intent);
                     }
@@ -273,25 +265,24 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
             post_Title.setText(title);
         }
 
-        public void setDist(String dist)
+        public void setPresentAdd(String dist)
         {
             TextView post_dist=mview.findViewById(R.id.districtname);
             post_dist.setText(dist);
         }
-
-        public void setname(String name)
+        public void setCriminalsName(String criminalsName)
         {
             TextView post_name=mview.findViewById(R.id.fullname);
-            post_name.setText(name);
-
-
+            post_name.setText(criminalsName);
         }
 
-        public void setFather(String father)
+
+        public void setFathersName(String father)
         {
             TextView post_father=mview.findViewById(R.id.fatherfullname);
             post_father.setText(father);
         }
+
 
         public void setRewards(String rewards)
         {
@@ -300,13 +291,12 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         }
 
 
+
     }
 
 
 
-
-
-    public void setuser(String user)
+    public void setUsername(String user)
     {
         TextView textviewUser=header.findViewById(R.id.profileUsername);
         textviewUser.setText(user);
