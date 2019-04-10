@@ -95,12 +95,13 @@ public class Post extends AppCompatActivity {
         body = findViewById(R.id.descripmain);
         PresentAdd=findViewById(R.id.preaddmain);
         PermanentAdd=findViewById(R.id.peraddmain);
-        Name=findViewById(R.id.criminalName);
+        Name=findViewById(R.id.criminalmain);
         Father=findViewById(R.id.criminalfathermain);
         Mother=findViewById(R.id.criminalmothermain);
-        imview=findViewById(R.id.ChooseId);
+        imview=findViewById(R.id.uppicbutton);
         Rewards=findViewById(R.id.rewardmain);
         post=findViewById(R.id.postbutton);
+        selectedImagePath=findViewById(R.id.uppicname);
 
 
 
@@ -201,6 +202,7 @@ public class Post extends AppCompatActivity {
     {
         if(pickedImageUri != null) {
 
+
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
             String[] parts = user.getEmail().toString().split("@");
@@ -266,6 +268,7 @@ public class Post extends AppCompatActivity {
 
             pickedImageUri=data.getData();
             imagePath=pickedImageUri.getPath().toString();
+            selectedImagePath.setText(imagePath);
         }
     }
 

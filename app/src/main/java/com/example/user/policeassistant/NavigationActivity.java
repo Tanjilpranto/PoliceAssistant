@@ -145,8 +145,6 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         context = this;
 
 
-        //saveRefrence=FirebaseDatabase.getInstance().getReference("SavedPost");
-
         drawerLayout= findViewById(R.id.drawerlayout);
         navigationView= findViewById(R.id.navigationview);
 
@@ -224,6 +222,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                         intent.putExtra("PermanentAddress",model.getPermanentAdd());
                         intent.putExtra("rewards",model.getRewards());
 
+                        intent.putExtra("Title",model.getTitle());
                         context.startActivity(intent);
                     }
                 });
