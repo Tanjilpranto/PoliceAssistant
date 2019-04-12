@@ -266,7 +266,8 @@
                     android:layout_toLeftOf="@id/uppicbutton"
                     android:background="@drawable/textboxborder"
                     android:typeface="monospace"
-                    android:textColor="#000"/>
+                    android:textColor="#000"
+                    android:padding="5dp"/>
                 <Button
                     android:id="@+id/uppicbutton"
                     android:layout_width="wrap_content"

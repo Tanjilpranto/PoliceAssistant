@@ -27,32 +27,23 @@ public class Blog {
     public String getTitle() {
         return Title;
     }
-
     public String getCriminalsName() {
         return CriminalsName;
     }
-
     public String getFathersName() {
         return FathersName;
     }
-
     public String getMothersName()
     {
         return MothersName;
     }
-
     public String getPermanentAdd()
     {
         return PermanentAdd;
     }
-
-
     public String getDescription() {
         return Description;
     }
-
-
-
     public String getPresentAdd() {
         return PresentAdd;
     }
@@ -60,8 +51,6 @@ public class Blog {
     {
         return Rewards;
     }
-
-
 
     public Blog(){
 

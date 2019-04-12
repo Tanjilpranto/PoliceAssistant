@@ -91,15 +91,6 @@
             android:textColor="#5f4339"
             android:textSize="14dp" />
 
-        <!--<ImageView-->
-        <!--android:id="@+id/showLocation"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:src="@drawable/ic_action_showlocation"-->
-        <!--android:layout_marginLeft="5dp"-->
-        <!--android:layout_below="@id/title"-->
-        <!--android:layout_toLeftOf="@id/districtname"/>-->
-
         <TextView
             android:id="@+id/district"
             android:layout_width="wrap_content"
@@ -117,6 +108,7 @@
             android:layout_below="@id/fathername"
             android:layout_toRightOf="@id/district"
             android:text="Chapai Nawabganj"
+            android:maxLength="20"
             android:textColor="#5f4339"
             android:textSize="14dp" />
 
@@ -137,6 +129,7 @@
             android:layout_below="@id/district"
             android:layout_toRightOf="@id/rewardable"
             android:text="100 XP"
+            android:maxLength="20"
             android:textColor="#5f4339"
             android:textSize="14dp" />
 

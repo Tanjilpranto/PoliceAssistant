@@ -12,8 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-
-        />
+        android:background="@color/background_secondary"/>
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -37,9 +36,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+        app:hideOnScroll="true"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:fabAlignmentMode="end"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+        app:layout_scrollFlags="scroll"
+        app:backgroundTint="@color/light"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fabbutton"
