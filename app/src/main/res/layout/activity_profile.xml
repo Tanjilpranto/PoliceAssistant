@@ -16,6 +16,7 @@
             android:orientation="vertical">
 
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ProfilePhotoId"
                 android:layout_marginTop="35dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="90dp"
@@ -23,6 +24,7 @@
                 android:src="@drawable/profilepic4"
                 android:scaleType="centerCrop"/>
             <TextView
+                android:id="@+id/ProfileNameid"
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
@@ -130,6 +132,7 @@
                 android:layout_height="25dp"
                 android:src="@drawable/ic_action_email"/>
             <TextView
+                android:id="@+id/ProfileEmailId"
                 android:textStyle="bold"
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
@@ -149,8 +152,8 @@
                 android:layout_height="25dp"
                 android:src="@drawable/ic_action_phonenumber"/>
             <TextView
+                android:id="@+id/ProfilePhoneId"
                 android:textStyle="bold"
-
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -169,8 +172,8 @@
                 android:layout_height="25dp"
                 android:src="@drawable/ic_action_password"/>
             <TextView
+                android:id="@+id/ProfilePasswordId"
                 android:textStyle="bold"
-
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

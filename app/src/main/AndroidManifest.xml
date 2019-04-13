@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".PostExpand"></activity>
+        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".PostExpand" />
         <activity android:name=".Rating" />
         <activity android:name=".Phone" />
         <activity

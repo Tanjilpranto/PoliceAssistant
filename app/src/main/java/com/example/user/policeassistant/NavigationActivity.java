@@ -54,7 +54,6 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     private DatabaseReference mdatabase;
     private String SplitUsername;
     private Button save;
-    private DatabaseReference saveRefrence;
 
     private RecyclerView mBloglist;
     private DatabaseReference mDatabase;
@@ -359,6 +358,9 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         switch (id){
             case R.id.profile:
                 //some work..............................
+                Intent profile = new Intent(getApplicationContext(), ProfileActivity.class);
+                startActivity(profile);
+                finish();
                 break;
             case R.id.savedposts:
                 //some work.............................
