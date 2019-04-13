@@ -15,12 +15,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".ProfileActivity"/>
         <activity android:name=".PostExpand" />
-        <activity android:name=".Rating" />
         <activity android:name=".Phone" />
-        <activity
-            android:name=".NavigationActivity"
+        <activity android:name=".NavigationActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Post" />
         <activity android:name=".SplashScreenActivity">

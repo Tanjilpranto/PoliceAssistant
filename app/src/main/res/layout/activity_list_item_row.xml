@@ -13,7 +13,8 @@
         android:id="@+id/postImage"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/deafaultpic" />
+        android:src="@drawable/deafaultpic"
+        android:transitionName="listPicTransition"/>
 
 
     <RelativeLayout
