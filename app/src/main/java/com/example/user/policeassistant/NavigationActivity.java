@@ -27,8 +27,10 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -47,6 +49,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     DrawerLayout drawerLayout;
     StorageReference storageRef;
     StorageReference Dref;
+    static StorageReference sr;
     private FloatingActionButton fabNavigation;
     private DatabaseReference mdatabase;
     private String SplitUsername;
@@ -66,6 +69,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     NavigationView navigationView;
     String Usernameprofile;
     View header;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -101,6 +105,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 
 
         Dref=FirebaseStorage.getInstance().getReference("postImage");
+        sr=FirebaseStorage.getInstance().getReference("PostImage");
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String email = user.getEmail();
 
@@ -195,6 +200,8 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 
     }
 
+
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -204,11 +211,14 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 
             @Override
             protected void populateViewHolder(NavigationActivity.BlogViewHolder viewHolder, final Blog model, int position) {
+                try{
                 viewHolder.setTitle(model.getTitle());
                 viewHolder.setCriminalsName(model.getCriminalsName());
                 viewHolder.setFathersName(model.getFathersName());
                 viewHolder.setPresentAdd(model.getPresentAdd());
                 viewHolder.setRewards(model.getRewards());
+                String st=model.getTitle();
+                viewHolder.setImage(st);
                 viewHolder.mview.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -221,12 +231,15 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                         intent.putExtra("mother",model.getMothersName());
                         intent.putExtra("PermanentAddress",model.getPermanentAdd());
                         intent.putExtra("rewards",model.getRewards());
-
                         intent.putExtra("Title",model.getTitle());
                         context.startActivity(intent);
                     }
                 });
 
+            }catch (Exception e)
+                {
+                    Toast.makeText(getApplicationContext(),"Post showing Error or No post to Show!",Toast.LENGTH_SHORT).show();
+                }
             }
 
         };
@@ -244,18 +257,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         {
             super(itemView);
             mview=itemView;
-            mview.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
 
-                    //Itemposition=getAdapterPosition();
-                    //Intent intent=new Intent(context,PostExpanded.class);
-                    //context.startActivity(intent);
-
-
-
-                }
-            });
         }
 
         public void setTitle(String title)
@@ -287,6 +289,25 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         {
             TextView post_reward=mview.findViewById(R.id.points);
             post_reward.setText(rewards);
+        }
+
+        public void setImage(String s)
+        {
+            final ImageView imageView=mview.findViewById(R.id.postImage);
+
+            try{
+            sr.child(s).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                  String url=uri.toString();
+                  Glide.with(context).load(url).into(imageView);
+                }
+            });}catch (Exception e)
+            {
+                Toast.makeText(context,"Error getting image",Toast.LENGTH_SHORT).show();
+            }
+
+
         }
 
 

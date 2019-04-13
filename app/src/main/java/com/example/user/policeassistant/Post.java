@@ -29,8 +29,11 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -45,6 +48,7 @@ public class Post extends AppCompatActivity {
 
     DatabaseReference databaseReference;
     DatabaseReference databaseReference2;
+    DatabaseReference db3;
 
 
     private ListView listView;
@@ -71,6 +75,8 @@ public class Post extends AppCompatActivity {
     private Button imview;
     private EditText Rewards;
     private Button post;
+    public String val;
+    public static int val2;
     private TextView selectedImagePath;
 
 
@@ -121,6 +127,7 @@ public class Post extends AppCompatActivity {
         databaseReference= FirebaseDatabase.getInstance().getReference();
 
         databaseReference2= FirebaseDatabase.getInstance().getReference();
+        db3=FirebaseDatabase.getInstance().getReference();
 
 
 
@@ -149,6 +156,8 @@ public class Post extends AppCompatActivity {
 
 
 
+
+
                     String Title = title.getText().toString();
                     String CriminalsName=Name.getText().toString();
                     String FathersName=Father.getText().toString();
@@ -157,9 +166,6 @@ public class Post extends AppCompatActivity {
                     String PermanentAddress=PermanentAdd.getText().toString();
                     String Description = body.getText().toString();
                     String rewards=Rewards.getText().toString();
-
-
-
 
                     String mydate = java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
 
@@ -182,10 +188,40 @@ public class Post extends AppCompatActivity {
                     body.setText("");
                     Rewards.setText("");
 
+
                     upload();
 
                     Intent intent=new Intent(getApplicationContext(),NavigationActivity.class);
                     startActivity(intent);
+
+
+                  /* db3.child("value").addValueEventListener(new ValueEventListener() {
+                       @Override
+                       public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                           val=dataSnapshot.getValue().toString();
+                           val2=Integer.parseInt(val);
+
+                           Toast.makeText(getApplicationContext(),String.valueOf(val2),Toast.LENGTH_SHORT).show();
+
+
+
+                       }
+
+                       @Override
+                       public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                       }
+                   });
+
+
+                    db3.child("value").setValue(val2+1);
+                    Toast.makeText(getApplicationContext(),String.valueOf(val2)+" AA",Toast.LENGTH_SHORT).show();
+                   */
+
+
+
+
+
 
                 }
             });
@@ -203,12 +239,12 @@ public class Post extends AppCompatActivity {
         if(pickedImageUri != null) {
 
 
-            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+           /* FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
             String[] parts = user.getEmail().toString().split("@");
-            final String img = parts[0];
+            final String img = parts[0];*/
             final String T = title.getText().toString();
-            StorageReference childRef = DownRef.child(img+T);
+            StorageReference childRef = DownRef.child(T);
 
             //uploading the image
             UploadTask uploadTask = childRef.putFile(pickedImageUri);
@@ -216,8 +252,6 @@ public class Post extends AppCompatActivity {
             uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-
 
 
                 }

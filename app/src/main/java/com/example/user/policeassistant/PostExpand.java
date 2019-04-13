@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -66,7 +67,8 @@ public class PostExpand extends AppCompatActivity {
         String imageDown=img+title;
 
 
-        DownRef1.child(imageDown).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+        try{
+        DownRef1.child(title).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
                 // Got the download URL for 'users/me/profile.png'
@@ -79,5 +81,9 @@ public class PostExpand extends AppCompatActivity {
                 // Handle any errors
             }
         });
+    }catch (Exception e)
+        {
+            Toast.makeText(getApplicationContext(),"Error getting image",Toast.LENGTH_SHORT).show();
+        }
     }
 }
