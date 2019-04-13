@@ -8,20 +8,20 @@
         android:id="@+id/complaintext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/light"
+        android:background="@color/primary"
         android:gravity="center"
         android:padding="8dp"
         android:text="C O M P L A I N"
         android:typeface="serif"
         android:textColor="@color/background_secondary"
-        android:textSize="25dp" />
+        android:textSize="25dp"/>
 
     <TextView
         android:id="@+id/detailstext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/complaintext"
-        android:background="@color/light"
+        android:background="@color/primary"
         android:gravity="center"
         android:paddingBottom="8dp"
         android:text="S H E E T"
@@ -72,7 +72,7 @@
                 android:layout_margin="5dp"
                 android:gravity="center"
                 android:text="Complain Title"
-                android:textColor="@color/light"
+                android:textColor="@color/primary"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:typeface="serif"/>
@@ -100,7 +100,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="30dp"
                 android:text="Criminal's name: "
-                android:textColor="@color/light"
+                android:textColor="@color/primary"
                 android:textSize="17dp"
                 android:typeface="serif" />
 
@@ -124,7 +124,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="15dp"
                 android:text="Father's name: "
-                android:textColor="@color/light"
+                android:textColor="@color/primary"
                 android:textSize="17dp"
                 android:typeface="serif" />
 
@@ -148,7 +148,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="15dp"
                 android:text="Mother's name: "
-                android:textColor="@color/light"
+                android:textColor="@color/primary"
                 android:textSize="17dp"
                 android:typeface="serif" />
 
@@ -172,7 +172,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="15dp"
                 android:text="Present Address: "
-                android:textColor="@color/light"
+                android:textColor="@color/primary"
                 android:textSize="17dp"
                 android:typeface="serif"/>
 
@@ -196,7 +196,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="15dp"
                 android:text="Permanent Address: "
-                android:textColor="@color/light"
+                android:textColor="@color/primary"
                 android:textSize="17dp"
                 android:typeface="serif"/>
 
@@ -220,7 +220,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="15dp"
                 android:text="Description: "
-                android:textColor="@color/light"
+                android:textColor="@color/primary"
                 android:textSize="17dp"
                 android:typeface="serif"/>
 
@@ -248,7 +248,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
                 android:text="Upload Photo:"
-                android:textColor="@color/light"
+                android:textColor="@color/primary"
                 android:textSize="17dp"
                 android:typeface="serif"/>
 
@@ -288,7 +288,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="15dp"
                 android:text="Rewards:"
-                android:textColor="@color/light"
+                android:textColor="@color/primary"
                 android:textSize="17dp"
                 android:typeface="serif" />
 

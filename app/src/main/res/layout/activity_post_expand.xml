@@ -8,7 +8,7 @@
         android:id="@+id/imagetransbackground"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:background="#4D000000"/>
+        android:background="#20000000"/>
 
     <ImageView
         android:id="@+id/criminalpic"
