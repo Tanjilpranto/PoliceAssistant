@@ -5,6 +5,8 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -28,6 +30,7 @@ public class ProfileActivity extends AppCompatActivity {
     private CircleImageView ProfileImage;
     private DatabaseReference ProfileRef;
     private StorageReference storageRef;
+    private Button ProfileEditButton;
     String SplitUsername;
 
     @Override
@@ -41,8 +44,10 @@ public class ProfileActivity extends AppCompatActivity {
         ProfilePhone=findViewById(R.id.ProfilePhoneId);
         ProfilePassword=findViewById(R.id.ProfilePasswordId);
         ProfileImage=findViewById(R.id.ProfilePhotoId);
+        ProfileEditButton=findViewById(R.id.ProfileEditButtonId);
         ProfileRef= FirebaseDatabase.getInstance().getReference();
         storageRef= FirebaseStorage.getInstance().getReference();
+
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String email = user.getEmail();
@@ -107,6 +112,16 @@ public class ProfileActivity extends AppCompatActivity {
         {
 
         }
+
+
+        ProfileEditButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getApplicationContext(),ProfileEditActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
 
 
