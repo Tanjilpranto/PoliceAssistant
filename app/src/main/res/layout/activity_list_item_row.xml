@@ -11,8 +11,9 @@
 
     <ImageView
         android:id="@+id/postImage"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="130dp"
+        android:adjustViewBounds="true"
+        android:layout_height="120dp"
         android:src="@drawable/deafaultpic" />
 
 

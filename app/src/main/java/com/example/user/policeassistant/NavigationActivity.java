@@ -9,7 +9,6 @@ import android.support.annotation.Nullable;
 import android.support.design.bottomappbar.BottomAppBar;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -26,11 +25,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -48,6 +48,8 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     Toolbar toolbar;
     DrawerLayout drawerLayout;
     StorageReference storageRef;
+    static Firebase old;
+    static Firebase New;
     StorageReference Dref;
     static StorageReference sr;
     private FloatingActionButton fabNavigation;
@@ -155,6 +157,8 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         navigationView.setNavigationItemSelectedListener(this);
         fabNavigation=findViewById(R.id.fabbutton);
         header=navigationView.getHeaderView(0);
+        //old=FirebaseDatabase.getInstance().getReference("https://police-assistant-d85ca.firebaseio.com/Posts/-LcKBQAWVInoeyiHqaVb");
+        //New=FirebaseDatabase.getInstance().getReference("User Posts");
 
         TextView profilemail=header.findViewById(R.id.profileEmail);
 
@@ -164,7 +168,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 
 
 
-        storageRef.child(SplitUsername).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+        storageRef.child("ProfilePicture").child(SplitUsername).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
                 // Got the download URL for 'users/me/profile.png'
@@ -218,6 +222,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                 viewHolder.setRewards(model.getRewards());
                 String st=model.getTitle();
                 viewHolder.setImage(st);
+                viewHolder.SavePost();
                 viewHolder.mview.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -299,7 +304,11 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                 @Override
                 public void onSuccess(Uri uri) {
                   String url=uri.toString();
-                  Glide.with(context).load(url).into(imageView);
+                  Glide
+                          .with(context)
+                          .load(url)
+                          .apply(new RequestOptions().override(510, 523))
+                         .into(imageView);
                 }
             });}catch (Exception e)
             {
@@ -307,6 +316,16 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
             }
 
 
+        }
+
+        public void SavePost()
+        {
+            Button savepost=mview.findViewById(R.id.savePost);
+            savepost.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                }
+            });
         }
 
 

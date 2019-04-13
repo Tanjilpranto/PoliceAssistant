@@ -12,6 +12,8 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+
+
 public class SplashScreenActivity extends AppCompatActivity {
 
     @Override

@@ -144,7 +144,7 @@ public class SignupActivity extends AppCompatActivity {
 
             String[] parts = U.split("@");
             final String img = parts[0]; // 004
-            StorageReference childRef = storageRef.child(img);
+            StorageReference childRef = storageRef.child("ProfilePicture").child(img);
 
             //uploading the image
             UploadTask uploadTask = childRef.putFile(pickedImageUri);

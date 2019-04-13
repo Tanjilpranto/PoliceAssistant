@@ -90,19 +90,23 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        storageRef.child(SplitUsername).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-               String ur= uri.toString();
-                Glide.with(getApplicationContext()).load(ur).into(ProfileImage);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                
-            }
-        });
+        try {
+            storageRef.child("ProfilePicture").child(SplitUsername).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    String ur = uri.toString();
+                    Glide.with(getApplicationContext()).load(ur).into(ProfileImage);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
 
+                }
+            });
+        }catch (Exception e)
+        {
+
+        }
 
 
 
