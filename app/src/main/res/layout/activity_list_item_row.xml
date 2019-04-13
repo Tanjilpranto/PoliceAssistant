@@ -11,12 +11,10 @@
 
     <ImageView
         android:id="@+id/postImage"
-        android:layout_width="130dp"
+        android:layout_width="100dp"
         android:adjustViewBounds="true"
-        android:layout_height="120dp"
+        android:layout_height="100dp"
         android:src="@drawable/deafaultpic" />
-
-
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

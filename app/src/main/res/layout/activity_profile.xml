@@ -8,12 +8,13 @@
     android:orientation="vertical">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="288dp">
+        android:layout_height="wrap_content">
         <LinearLayout
             android:background="@drawable/gradientbackground"
             android:layout_width="match_parent"
             android:layout_height="260dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:transitionName="layoutTransition">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/ProfilePhotoId"
@@ -22,7 +23,8 @@
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:src="@drawable/profilepic4"
-                android:scaleType="centerCrop"/>
+                android:scaleType="centerCrop"
+                android:transitionName="imageTransition"/>
             <TextView
                 android:id="@+id/ProfileNameid"
                 android:layout_marginTop="10dp"
@@ -31,7 +33,8 @@
                 android:layout_height="wrap_content"
                 android:text="Abu Ubaida Akash"
                 android:textColor="#fff"
-                android:textSize="21dp"/>
+                android:textSize="21dp"
+                android:transitionName="nameTransition"/>
 
         </LinearLayout>
         <android.support.v7.widget.CardView
@@ -139,7 +142,8 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
                 android:text="abu.ubaida1206@gmail.com"
-                android:textSize="15dp"/>
+                android:textSize="15dp"
+                android:transitionName="mailTransition"/>
         </LinearLayout>
         <LinearLayout
             android:layout_marginTop="25dp"
@@ -211,7 +215,9 @@
         android:background="@drawable/buttonprofileedit"
         android:drawableLeft="@drawable/ic_action_edit"
         android:text="Edit"
+        android:textAllCaps="false"
         android:textColor="#fff"
-        android:textSize="13dp" />
+        android:textSize="15dp"
+        android:transitionName="buttonTransition"/>
 
 </LinearLayout>

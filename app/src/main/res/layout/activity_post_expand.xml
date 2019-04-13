@@ -8,7 +8,8 @@
         android:id="@+id/imagetransbackground"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:background="#20000000"/>
+        android:background="#20000000"
+        android:transitionName="listPicTransition"/>
 
     <ImageView
         android:id="@+id/criminalpic"
@@ -36,7 +37,7 @@
         style="?android:attr/borderlessButtonStyle"/>
 
     <ScrollView
-        android:id="@+id/scrollview"
+        android:id="@+id/scrollviewPostExpand"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/criminalpic"
