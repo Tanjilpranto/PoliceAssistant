@@ -202,7 +202,7 @@
 
     <Button
         android:layout_width="85dp"
-        android:layout_height="33dp"
+        android:layout_height="35dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="40dp"
         android:background="@drawable/buttonprofileedit"
