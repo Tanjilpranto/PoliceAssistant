@@ -1,7 +1,7 @@
 package com.example.user.policeassistant;
 
 import android.app.Activity;
-import android.app.ActivityOptions;
+
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -31,7 +31,6 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -259,6 +258,12 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                         intent.putExtra("rewards",model.getRewards());
                         intent.putExtra("Title",model.getTitle());
                         context.startActivity(intent,compat.toBundle());
+
+//                        Pair[] pairs=new Pair[2];
+//                        pairs[0]=new Pair<View,String>(imageView,"listImageTransition");
+//
+//                        ActivityOptions options=ActivityOptions.makeSceneTransitionAnimation(NavigationActivity.this, pairs);
+                        context.startActivity(intent);
                     }
                 });
 
