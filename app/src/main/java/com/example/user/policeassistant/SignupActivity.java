@@ -1,6 +1,7 @@
 package com.example.user.policeassistant;
 
 import android.Manifest;
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -8,15 +9,19 @@ import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -33,7 +38,10 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-public class SignupActivity extends AppCompatActivity {
+import java.text.DateFormat;
+import java.util.Calendar;
+
+public class SignupActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     String[] districtNames;
     private Button SignupSignin;
@@ -49,6 +57,12 @@ public class SignupActivity extends AppCompatActivity {
     private FirebaseUser currentUser;
     private DatabaseReference reference;
     private String SplitEmail;
+    private EditText date;
+    private EditText month;
+    private EditText year;
+    private Button genderMale;
+    private Button genderFemale;
+    private ImageButton calendarButton;
 
 
 
@@ -89,6 +103,13 @@ public class SignupActivity extends AppCompatActivity {
         EditTextEmail=findViewById(R.id.editTextEmail);
         EditTextPassword=findViewById(R.id.editTextPassword);
         EditTextPhone=findViewById(R.id.phoneID);
+        date=findViewById(R.id.date);
+        month=findViewById(R.id.month);
+        year=findViewById(R.id.year);
+        genderMale=findViewById(R.id.gendermale);
+        genderFemale=findViewById(R.id.genderfemale);
+        calendarButton=findViewById(R.id.calendarButton);
+
 
         firebaseAuth=FirebaseAuth.getInstance();
 
@@ -133,8 +154,53 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
 
+        calendarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment datePicker=new DatePickerFragment();
+                datePicker.show(getSupportFragmentManager(),"date picker");
+            }
+        });
+
+        genderMale.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                genderMale.setEnabled(true);
+                genderFemale.setEnabled(false);
+            }
+        });
+
+        genderFemale.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                genderMale.setEnabled(false);
+                genderFemale.setEnabled(true);
+            }
+        });
+
     }
 
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+        Calendar c=Calendar.getInstance();
+        c.set(Calendar.YEAR,year);
+        c.set(Calendar.MONTH,month);
+        c.set(Calendar.DAY_OF_MONTH,dayOfMonth);
+
+        String currentDateString= Integer.toString(c.get(Calendar.DATE));
+        String currentMonthString= Integer.toString(c.get(Calendar.MONTH)+1);
+        String currentYearString= Integer.toString(c.get(Calendar.YEAR));
+
+        TextView dateText=findViewById(R.id.date);
+        dateText.setText(currentDateString);
+
+        TextView monthText=findViewById(R.id.month);
+        monthText.setText(currentMonthString);
+
+        TextView yearText=findViewById(R.id.year);
+        yearText.setText(currentYearString);
+    }
 
     public void upload()
     {

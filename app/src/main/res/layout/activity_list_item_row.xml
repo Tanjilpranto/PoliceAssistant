@@ -15,7 +15,8 @@
         android:adjustViewBounds="true"
         android:transitionName="pic"
         android:layout_height="100dp"
-        android:src="@drawable/deafaultpic" />
+        android:src="@drawable/deafaultpic"
+        android:transitionName="listImageTransition"/>
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

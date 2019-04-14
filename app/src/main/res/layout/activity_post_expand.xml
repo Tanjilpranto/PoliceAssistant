@@ -17,7 +17,8 @@
         android:layout_height="250dp"
         android:transitionName="pic"
         android:padding="10dp"
-        android:src="@drawable/profilepic2"/>
+        android:src="@drawable/profilepic2"
+        android:transitionName="listImageTransition"/>
 
     <ImageButton
         android:id="@+id/downloadpic"
