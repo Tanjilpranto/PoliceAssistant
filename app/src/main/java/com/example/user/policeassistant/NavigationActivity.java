@@ -1,5 +1,6 @@
 package com.example.user.policeassistant;
 
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -16,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -236,6 +238,11 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                         intent.putExtra("PermanentAddress",model.getPermanentAdd());
                         intent.putExtra("rewards",model.getRewards());
                         intent.putExtra("Title",model.getTitle());
+
+//                        Pair[] pairs=new Pair[2];
+//                        pairs[0]=new Pair<View,String>(imageView,"listImageTransition");
+//
+//                        ActivityOptions options=ActivityOptions.makeSceneTransitionAnimation(NavigationActivity.this, pairs);
                         context.startActivity(intent);
                     }
                 });
