@@ -163,6 +163,7 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
                 android:text="+8801858204222"
+                android:transitionName="PhoneTransition"
                 android:textSize="15dp"/>
         </LinearLayout>
         <LinearLayout
@@ -182,6 +183,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
+                android:transitionName="PasswordTransition"
                 android:text="* * * * * * * * * *"
                 android:textSize="15dp"/>
         </LinearLayout>

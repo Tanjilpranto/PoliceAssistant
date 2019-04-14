@@ -136,7 +136,7 @@ public class SignupActivity extends AppCompatActivity {
     }
 
 
-    void upload()
+    public void upload()
     {
         if(pickedImageUri != null) {
             pd.show();

@@ -1,5 +1,7 @@
 package com.example.user.policeassistant;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -9,6 +11,7 @@ import android.support.annotation.Nullable;
 import android.support.design.bottomappbar.BottomAppBar;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -16,6 +19,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -213,7 +217,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                 (Blog.class,R.layout.activity_list_item_row, NavigationActivity.BlogViewHolder.class,mDatabase){
 
             @Override
-            protected void populateViewHolder(NavigationActivity.BlogViewHolder viewHolder, final Blog model, int position) {
+            protected void populateViewHolder(NavigationActivity.BlogViewHolder viewHolder, final Blog model, final int position) {
                 try{
                 viewHolder.setTitle(model.getTitle());
                 viewHolder.setCriminalsName(model.getCriminalsName());
@@ -228,6 +232,24 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                     public void onClick(View v) {
 
                         Intent intent=new Intent(context,PostExpand.class);
+
+                        TextView fullname=findViewById(R.id.fullname);
+                        TextView fathersName=findViewById(R.id.fatherfullname);
+                        TextView district=findViewById(R.id.districtname);
+                        TextView rewards=findViewById(R.id.points);
+                        ImageView imageView=findViewById(R.id.postImage);
+
+                        Pair[] pairs=new Pair[4];
+                        pairs[0]=new Pair<View,String>(fullname,"Name");
+                        pairs[1]=new Pair<View,String>(fathersName,"FatherName");
+                        pairs[2]=new Pair<View,String>(district,"District");
+                        pairs[3]=new Pair<View,String>(rewards,"Rewards");
+
+
+
+
+
+                        ActivityOptionsCompat compat= ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context,imageView,"pic");
                         intent.putExtra("name",model.getCriminalsName());
                         intent.putExtra("father",model.getFathersName());
                         intent.putExtra("PresentAddress",model.getPresentAdd());
@@ -236,7 +258,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                         intent.putExtra("PermanentAddress",model.getPermanentAdd());
                         intent.putExtra("rewards",model.getRewards());
                         intent.putExtra("Title",model.getTitle());
-                        context.startActivity(intent);
+                        context.startActivity(intent,compat.toBundle());
                     }
                 });
 

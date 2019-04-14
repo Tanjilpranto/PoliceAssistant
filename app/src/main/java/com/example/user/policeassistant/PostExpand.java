@@ -115,19 +115,9 @@ public class PostExpand extends AppCompatActivity {
 
 
 
-
             }
         });
 
     }
-
-
-
-
-
-
-
-
-
 
 }

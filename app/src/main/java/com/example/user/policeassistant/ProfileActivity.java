@@ -1,10 +1,12 @@
 package com.example.user.policeassistant;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -115,11 +117,21 @@ public class ProfileActivity extends AppCompatActivity {
 
 
         ProfileEditButton.setOnClickListener(new View.OnClickListener() {
+            boolean visible;
             @Override
             public void onClick(View v) {
+
+
+
                 Intent intent=new Intent(getApplicationContext(),ProfileEditActivity.class);
-                startActivity(intent);
-                finish();
+
+                Pair[] pairs=new Pair[3];
+                pairs[0]=new Pair<View,String>(ProfileName,"nameTransition");
+                pairs[1]=new Pair<View,String>(ProfilePassword,"PasswordTransition");
+                pairs[2]=new Pair<View,String>(ProfilePhone,"PhoneTransition");
+                ActivityOptions activityOptions=ActivityOptions.makeSceneTransitionAnimation(ProfileActivity.this,pairs);
+                startActivity(intent,activityOptions.toBundle());
+
             }
         });
 

@@ -13,6 +13,7 @@
         android:id="@+id/postImage"
         android:layout_width="100dp"
         android:adjustViewBounds="true"
+        android:transitionName="pic"
         android:layout_height="100dp"
         android:src="@drawable/deafaultpic" />
     <RelativeLayout
@@ -66,6 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/post_title"
             android:layout_toRightOf="@id/name"
+            android:transitionName="Name"
             android:text="Abu Ubaida Akash"
             android:textColor="#5f4339"
             android:textSize="14dp" />
@@ -87,6 +89,7 @@
             android:layout_below="@id/name"
             android:layout_toRightOf="@id/fathername"
             android:text="Qamruzzaman"
+            android:transitionName="FatherName"
             android:textColor="#5f4339"
             android:textSize="14dp" />
 
@@ -107,6 +110,7 @@
             android:layout_below="@id/fathername"
             android:layout_toRightOf="@id/district"
             android:text="Chapai Nawabganj"
+            android:transitionName="District"
             android:maxLength="20"
             android:textColor="#5f4339"
             android:textSize="14dp" />
@@ -129,6 +133,7 @@
             android:layout_toRightOf="@id/rewardable"
             android:text="100 XP"
             android:maxLength="20"
+            android:transitionName="Rewards"
             android:textColor="#5f4339"
             android:textSize="14dp" />
 

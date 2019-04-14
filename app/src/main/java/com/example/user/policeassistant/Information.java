@@ -4,6 +4,8 @@ package com.example.user.policeassistant;
 //This information will be saved into Firebase database
 
 
+import android.location.Address;
+
 public class Information {
 
 
@@ -30,6 +32,7 @@ public class Information {
 
 
     }
+
 
     public Information(String Name, String password, String username, String email, String district,String phone)
     {
