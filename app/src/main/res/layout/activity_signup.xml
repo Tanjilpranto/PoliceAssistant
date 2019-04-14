@@ -237,9 +237,10 @@
                     <Spinner
                         android:id="@+id/spinnerId"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="27dp"
                         android:layout_marginLeft="10dp"
-                        android:layout_marginRight="30dp" />
+                        android:layout_marginRight="30dp"
+                        android:gravity="center"/>
 
                 </LinearLayout>
 
