@@ -202,7 +202,7 @@ public class SignupActivity extends AppCompatActivity implements DatePickerDialo
         yearText.setText(currentYearString);
     }
 
-    public void upload()
+    void upload()
     {
         if(pickedImageUri != null) {
             pd.show();
