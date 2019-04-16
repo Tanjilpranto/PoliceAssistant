@@ -12,7 +12,7 @@ public class Information {
 
     public String Title,CriminalsName,FathersName,MothersName,PresentAdd,PermanentAdd,Description,Rewards,Date;
 
-    public String FullName,Password,Username,Email,District,Phone;
+    public String FullName,Password,Username,Email,District,Phone,Address,Gender,DateOfBirth;
 
     public Information() {
 
@@ -34,7 +34,7 @@ public class Information {
     }
 
 
-    public Information(String Name, String password, String username, String email, String district,String phone)
+    public Information(String Name, String password, String username, String email, String district,String phone,String address,String date)
     {
         FullName=Name;
         Password=password;
@@ -42,6 +42,9 @@ public class Information {
         Email=email;
         District=district;
         Phone=phone;
+        Address=address;
+        DateOfBirth=date;
+
     }
 
 

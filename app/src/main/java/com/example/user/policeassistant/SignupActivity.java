@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -52,6 +53,7 @@ public class SignupActivity extends AppCompatActivity implements DatePickerDialo
     private EditText EditTextPhone;
     private ImageView uploadImg;
     private EditText Repassword;
+    private EditText Address;
     private Spinner District;
     private Button SignupSignup;
     private FirebaseUser currentUser;
@@ -63,6 +65,8 @@ public class SignupActivity extends AppCompatActivity implements DatePickerDialo
     private Button genderMale;
     private Button genderFemale;
     private ImageButton calendarButton;
+    private CheckBox checker;
+    public String Dates;
 
 
 
@@ -96,8 +100,10 @@ public class SignupActivity extends AppCompatActivity implements DatePickerDialo
         SignupSignin=findViewById(R.id.buttonSignupSignInId);
         SignupSignup=findViewById(R.id.buttonSignupSignupId);
         EditTextFullname=findViewById(R.id.EditTextFullnameId);
+        Address=findViewById(R.id.editAddressDetails);
         uploadImg=findViewById(R.id.uploadImg);
         District=findViewById(R.id.spinnerId);
+        checker=findViewById(R.id.checkboxSignup);
         EditTextUsername=findViewById(R.id.EditTextUsernameId);
         reference=FirebaseDatabase.getInstance().getReference("Users");
         EditTextEmail=findViewById(R.id.editTextEmail);
@@ -109,6 +115,7 @@ public class SignupActivity extends AppCompatActivity implements DatePickerDialo
         genderMale=findViewById(R.id.gendermale);
         genderFemale=findViewById(R.id.genderfemale);
         calendarButton=findViewById(R.id.calendarButton);
+        Address=findViewById(R.id.editAddressDetails);
 
 
         firebaseAuth=FirebaseAuth.getInstance();
@@ -167,6 +174,7 @@ public class SignupActivity extends AppCompatActivity implements DatePickerDialo
             public void onClick(View v) {
                 genderMale.setEnabled(true);
                 genderFemale.setEnabled(false);
+
             }
         });
 
@@ -191,6 +199,8 @@ public class SignupActivity extends AppCompatActivity implements DatePickerDialo
         String currentDateString= Integer.toString(c.get(Calendar.DATE));
         String currentMonthString= Integer.toString(c.get(Calendar.MONTH)+1);
         String currentYearString= Integer.toString(c.get(Calendar.YEAR));
+
+        Dates=currentDateString+"."+currentMonthString+"."+currentYearString;
 
         TextView dateText=findViewById(R.id.date);
         dateText.setText(currentDateString);
@@ -312,12 +322,15 @@ public class SignupActivity extends AppCompatActivity implements DatePickerDialo
         String District=spinnerid.getSelectedItem().toString();
         String Repass=Repassword.getText().toString();
         String Phone=EditTextPhone.getText().toString();
+        String address=Address.getText().toString();
+
+
 
         String[] part =Email.split("@");
         SplitEmail=part[0];
 
 
-        Information information=new Information(FullName,Password,Username,Email,District,Phone);
+        Information information=new Information(FullName,Password,Username,Email,District,Phone,address,Dates);
 
 
         reference.child(SplitEmail).setValue(information);
@@ -338,6 +351,8 @@ public class SignupActivity extends AppCompatActivity implements DatePickerDialo
 
         if(passwordString.equals(passRe)  ){
 
+            if(checker.isChecked())
+            {
             if(pickedImageUri!=null) {
                 firebaseAuth.createUserWithEmailAndPassword(emailString, passwordString).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -380,7 +395,11 @@ public class SignupActivity extends AppCompatActivity implements DatePickerDialo
                 Toast.makeText(SignupActivity.this, "Select an image", Toast.LENGTH_SHORT).show();
 
             }
-    }else {
+    }else{
+
+                Toast.makeText(SignupActivity.this,"Please Accept Terms & Conditions",Toast.LENGTH_SHORT).show();
+            }
+        }else {
             Toast.makeText(SignupActivity.this,"Password Not Matched!",Toast.LENGTH_SHORT).show();
         }
 

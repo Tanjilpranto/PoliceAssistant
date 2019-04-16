@@ -90,6 +90,11 @@ public class PostExpand extends AppCompatActivity {
 
 
         try{
+            if(title.isEmpty())
+            {
+
+                title="NO_IMAGE.jpg";
+            }
         DownRef1.child(title).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
@@ -105,7 +110,7 @@ public class PostExpand extends AppCompatActivity {
         });
     }catch (Exception e)
         {
-            Toast.makeText(getApplicationContext(),"Error getting image",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"Error getting image in Post expanded",Toast.LENGTH_SHORT).show();
         }
 
 

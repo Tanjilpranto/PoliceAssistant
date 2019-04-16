@@ -161,9 +161,7 @@ public class Post extends AppCompatActivity {
 
 
 
-
-
-                   String Title = title.getText().toString();
+                    String Title = title.getText().toString();
                     String CriminalsName=Name.getText().toString();
                     String FathersName=Father.getText().toString();
                     String MothersName=Mother.getText().toString();
@@ -172,32 +170,35 @@ public class Post extends AppCompatActivity {
                     String Description = body.getText().toString();
                     String rewards=Rewards.getText().toString();
 
-                    String mydate = java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
+                   if(Title.isEmpty() || CriminalsName.isEmpty() || FathersName.isEmpty() || MothersName.isEmpty() || PresentAddress.isEmpty() || PermanentAddress.isEmpty() || Description.isEmpty() || rewards.isEmpty())
+                   {
+                       Toast.makeText(Post.this, "Please Fill all the informations properly.", Toast.LENGTH_LONG).show();
+                   }else {
 
-                    Information info = new Information(Title,CriminalsName,FathersName,MothersName,PresentAddress,PermanentAddress,Description,rewards+" XP",mydate);
-
-
-
-                    databaseReference.child(s).push().setValue(info);
-                    databaseReference2.child("User Posts").child(user).push().setValue(info);
-
+                       String mydate = java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
+                       Information info = new Information(Title, CriminalsName, FathersName, MothersName, PresentAddress, PermanentAddress, Description, rewards + " XP", mydate);
 
 
-                    Toast.makeText(Post.this, "Post Saved", Toast.LENGTH_LONG).show();
-
-                    Name.setText("");
-                    Father.setText("");
-                    Mother.setText("");
-                    PresentAdd.setText("");
-                    PermanentAdd.setText("");
-                    body.setText("");
-                    Rewards.setText("");
+                       databaseReference.child(s).push().setValue(info);
+                       databaseReference2.child("User Posts").child(user).push().setValue(info);
 
 
-                    upload();
+                       Toast.makeText(Post.this, "Post Saved", Toast.LENGTH_LONG).show();
 
-                    Intent intent=new Intent(getApplicationContext(),NavigationActivity.class);
-                    startActivity(intent);
+                       Name.setText("");
+                       Father.setText("");
+                       Mother.setText("");
+                       PresentAdd.setText("");
+                       PermanentAdd.setText("");
+                       body.setText("");
+                       Rewards.setText("");
+
+
+                       upload();
+
+                       Intent intent = new Intent(getApplicationContext(), NavigationActivity.class);
+                       startActivity(intent);
+                   }
 
 
                   /* db3.child("value").addValueEventListener(new ValueEventListener() {
@@ -224,10 +225,6 @@ public class Post extends AppCompatActivity {
                    */
 
 
-
-
-
-
                 }
             });
         }catch (Exception e)
@@ -248,7 +245,10 @@ public class Post extends AppCompatActivity {
 
             String[] parts = user.getEmail().toString().split("@");
             final String img = parts[0];*/
+            try{
+
             final String T = title.getText().toString();
+
             StorageReference childRef = DownRef.child(T);
 
             //uploading the image
@@ -267,6 +267,11 @@ public class Post extends AppCompatActivity {
                     Toast.makeText(Post.this, "Post Saving Failed" + e, Toast.LENGTH_SHORT).show();
                 }
             });
+        }catch (Exception e)
+            {
+                Toast.makeText(Post.this, "Post Saving Failed" + e, Toast.LENGTH_SHORT).show();
+            }
+
         }
         else {
 

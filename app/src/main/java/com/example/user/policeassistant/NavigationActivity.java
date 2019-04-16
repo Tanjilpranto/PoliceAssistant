@@ -327,6 +327,14 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
             final ImageView imageView=mview.findViewById(R.id.postImage);
 
             try{
+
+
+                if(s.isEmpty())
+                {
+
+                    s="NO_IMAGE.jpg";
+                }
+
             sr.child(s).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {

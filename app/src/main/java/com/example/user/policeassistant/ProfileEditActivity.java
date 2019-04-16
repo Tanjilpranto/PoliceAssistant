@@ -98,6 +98,19 @@ public class ProfileEditActivity extends AppCompatActivity {
             }
         });
 
+        ProfileRef.child("Users").child(SplitUsername).child("Address").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String address=dataSnapshot.getValue().toString();
+                ProfileAddressEdit.setText(address);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
         try {
             storageRef.child("ProfilePicture").child(SplitUsername).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
