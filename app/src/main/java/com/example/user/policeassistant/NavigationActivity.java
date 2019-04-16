@@ -53,21 +53,20 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     Toolbar toolbar;
     DrawerLayout drawerLayout;
     StorageReference storageRef;
-    static Firebase old;
-    static Firebase New;
     StorageReference Dref;
     static StorageReference sr;
     private FloatingActionButton fabNavigation;
     private DatabaseReference mdatabase;
     private String SplitUsername;
     private Button save;
+    DatabaseReference PostID;
+    public int postid;
 
     private RecyclerView mBloglist;
     private DatabaseReference mDatabase;
     private static Context context;
 
     public String ur;
-    public static int Itemposition;
 
     private BottomAppBar bottomAppBar;
     private FloatingActionButton fab;
@@ -123,6 +122,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         mdatabase=FirebaseDatabase.getInstance().getReference("Users");
         storageRef= FirebaseStorage.getInstance().getReference();
         save=findViewById(R.id.savePost);
+        PostID=FirebaseDatabase.getInstance().getReference();
 
 
 
@@ -196,9 +196,31 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         fabNavigation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                PostID.child("Posts").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                      // postid= (int) dataSnapshot.getChildrenCount();
+                        //Toast.makeText(getApplicationContext(),String.valueOf(postid),Toast.LENGTH_SHORT).show();
+                       /* if(dataSnapshot!=null)
+                        {
+                            postid= (int) dataSnapshot.getChildrenCount();
+                        }*/
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
                 Intent intent=new Intent(getApplicationContext(),Post.class);
                 startActivity(intent);
                 finish();
+               // String id=T.getText().toString();
+               //Toast.makeText(getApplicationContext(),String.valueOf(postid),Toast.LENGTH_SHORT).show();
+
+
 
             }
         });
@@ -272,7 +294,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 //                        pairs[0]=new Pair<View,String>(imageView,"listImageTransition");
 //
 //                        ActivityOptions options=ActivityOptions.makeSceneTransitionAnimation(NavigationActivity.this, pairs);
-                        context.startActivity(intent);
+                        //context.startActivity(intent);
                     }
                 });
 
@@ -457,11 +479,11 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                 break;
             case R.id.savedposts:
                 //some work.............................
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-                String[] parts = user.getEmail().toString().split("@");
-                final String mail = parts[0];
                 //DatabaseReference savedRef=FirebaseDatabase.getInstance().getReference("User Posts").child(mail).child("SavedPost");
+               /* Intent savedposts=new Intent(getApplicationContext(),SavedPostsActivity.class);
+                startActivity(savedposts);
+                finish();*/
 
                 break;
             case R.id.rewards:

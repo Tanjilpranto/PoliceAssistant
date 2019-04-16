@@ -10,6 +10,7 @@ import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -117,13 +118,9 @@ public class ProfileActivity extends AppCompatActivity {
 
 
         ProfileEditButton.setOnClickListener(new View.OnClickListener() {
-            boolean visible;
             @Override
             public void onClick(View v) {
-
-
-
-                Intent intent=new Intent(getApplicationContext(),ProfileEditActivity.class);
+               Intent intent=new Intent(getApplicationContext(),ProfileEditActivity.class);
 
                 Pair[] pairs=new Pair[3];
                 pairs[0]=new Pair<View,String>(ProfileName,"nameTransition");
@@ -131,6 +128,7 @@ public class ProfileActivity extends AppCompatActivity {
                 pairs[2]=new Pair<View,String>(ProfilePhone,"PhoneTransition");
                 ActivityOptions activityOptions=ActivityOptions.makeSceneTransitionAnimation(ProfileActivity.this,pairs);
                 startActivity(intent,activityOptions.toBundle());
+
 
             }
         });

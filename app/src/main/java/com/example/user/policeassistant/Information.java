@@ -11,6 +11,7 @@ public class Information {
 
 
     public String Title,CriminalsName,FathersName,MothersName,PresentAdd,PermanentAdd,Description,Rewards,Date;
+    public int PostID;
 
     public String FullName,Password,Username,Email,District,Phone,Address,Gender,DateOfBirth;
 
@@ -18,7 +19,7 @@ public class Information {
 
     }
 
-    public Information(String Title,String CriminalsName,String FathersName,String MothersName,String PresentAddress,String PermanentAddress,String Description,String rewards,String mydate)
+    public Information(String Title,String CriminalsName,String FathersName,String MothersName,String PresentAddress,String PermanentAddress,String Description,String rewards,String mydate,int postID)
     {
         this.Title=Title;
         this.CriminalsName=CriminalsName;
@@ -29,6 +30,8 @@ public class Information {
         this.Description=Description;
         this.Rewards=rewards;
         this.Date=mydate;
+        this.PostID=postID;
+
 
 
     }

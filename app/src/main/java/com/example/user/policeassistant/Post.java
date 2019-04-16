@@ -51,7 +51,9 @@ public class Post extends AppCompatActivity {
 
     DatabaseReference databaseReference;
     DatabaseReference databaseReference2;
+
     DatabaseReference db3;
+    public int childcount;
 
 
     private ListView listView;
@@ -131,7 +133,7 @@ public class Post extends AppCompatActivity {
         databaseReference= FirebaseDatabase.getInstance().getReference();
 
         databaseReference2= FirebaseDatabase.getInstance().getReference();
-        db3=FirebaseDatabase.getInstance().getReference();
+        db3=FirebaseDatabase.getInstance().getReference("Posts");
 
 
 
@@ -154,14 +156,36 @@ public class Post extends AppCompatActivity {
 
             }
 
+
+
            post.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
 
+                   /* db3.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
 
-                    String Title = title.getText().toString();
+                            childcount= (int) dataSnapshot.getChildrenCount();
+
+                            Toast.makeText(getApplicationContext(),String.valueOf(childcount),Toast.LENGTH_SHORT).show();
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });*/
+
+
+
+
+
+
+                   final String Title = title.getText().toString();
                     String CriminalsName=Name.getText().toString();
                     String FathersName=Father.getText().toString();
                     String MothersName=Mother.getText().toString();
@@ -176,7 +200,9 @@ public class Post extends AppCompatActivity {
                    }else {
 
                        String mydate = java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
-                       Information info = new Information(Title, CriminalsName, FathersName, MothersName, PresentAddress, PermanentAddress, Description, rewards + " XP", mydate);
+                       Information info = new Information(Title, CriminalsName, FathersName, MothersName, PresentAddress, PermanentAddress, Description, rewards + " XP", mydate,childcount+1);
+
+
 
 
                        databaseReference.child(s).push().setValue(info);
@@ -194,35 +220,17 @@ public class Post extends AppCompatActivity {
                        Rewards.setText("");
 
 
+
                        upload();
 
-                       Intent intent = new Intent(getApplicationContext(), NavigationActivity.class);
+                      Intent intent = new Intent(getApplicationContext(), NavigationActivity.class);
                        startActivity(intent);
                    }
 
 
-                  /* db3.child("value").addValueEventListener(new ValueEventListener() {
-                       @Override
-                       public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                           val=dataSnapshot.getValue().toString();
-                           val2=Integer.parseInt(val);
-
-                           Toast.makeText(getApplicationContext(),String.valueOf(val2),Toast.LENGTH_SHORT).show();
 
 
 
-                       }
-
-                       @Override
-                       public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                       }
-                   });
-
-
-                    db3.child("value").setValue(val2+1);
-                    Toast.makeText(getApplicationContext(),String.valueOf(val2)+" AA",Toast.LENGTH_SHORT).show();
-                   */
 
 
                 }
@@ -238,6 +246,7 @@ public class Post extends AppCompatActivity {
 
     void upload()
     {
+
         if(pickedImageUri != null) {
 
 
