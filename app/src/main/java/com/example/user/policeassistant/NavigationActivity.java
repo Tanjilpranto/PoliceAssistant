@@ -32,8 +32,10 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.firebase.client.Firebase;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -160,8 +162,6 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         navigationView.setNavigationItemSelectedListener(this);
         fabNavigation=findViewById(R.id.fabbutton);
         header=navigationView.getHeaderView(0);
-        //old=FirebaseDatabase.getInstance().getReference("https://police-assistant-d85ca.firebaseio.com/Posts/-LcKBQAWVInoeyiHqaVb");
-        //New=FirebaseDatabase.getInstance().getReference("User Posts");
 
         TextView profilemail=header.findViewById(R.id.profileEmail);
 
@@ -212,7 +212,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     protected void onStart() {
         super.onStart();
 
-        FirebaseRecyclerAdapter<Blog,NavigationActivity.BlogViewHolder> firebaseRecyclerAdapter=new FirebaseRecyclerAdapter<Blog, NavigationActivity.BlogViewHolder>
+        final FirebaseRecyclerAdapter<Blog,NavigationActivity.BlogViewHolder> firebaseRecyclerAdapter=new FirebaseRecyclerAdapter<Blog, NavigationActivity.BlogViewHolder>
                 (Blog.class,R.layout.activity_list_item_row, NavigationActivity.BlogViewHolder.class,mDatabase){
 
             @Override
@@ -225,10 +225,19 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                 viewHolder.setRewards(model.getRewards());
                 String st=model.getTitle();
                 viewHolder.setImage(st);
-                viewHolder.SavePost();
+                final int p=viewHolder.getPosition();
+                final DatabaseReference rf=getRef(p);
+                viewHolder.SavePost(rf);
+
+
+
+
+
+
                 viewHolder.mview.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
 
                         Intent intent=new Intent(context,PostExpand.class);
 
@@ -353,12 +362,43 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 
         }
 
-        public void SavePost()
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+            String[] parts = user.getEmail().toString().split("@");
+            final String mail = parts[0];
+
+        private void copyRecord(DatabaseReference fromPath, final DatabaseReference toPath) {
+
+            fromPath.addListenerForSingleValueEvent(new ValueEventListener()  {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    toPath.setValue(dataSnapshot.getValue()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+
+                            Toast.makeText(context,"Post Saved Successfully",Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Toast.makeText(context,"Post Saving Failed",Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
+
+
+
+        public void SavePost(final DatabaseReference fromPath)
         {
             Button savepost=mview.findViewById(R.id.savePost);
             savepost.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+                    DatabaseReference ToPath=FirebaseDatabase.getInstance().getReference("User Posts").child(mail).child("SavedPost").push();
+                    copyRecord(fromPath,ToPath);
                 }
             });
         }
@@ -366,7 +406,6 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 
 
     }
-
 
 
     public void setUsername(String user)
@@ -418,6 +457,12 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                 break;
             case R.id.savedposts:
                 //some work.............................
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+                String[] parts = user.getEmail().toString().split("@");
+                final String mail = parts[0];
+                //DatabaseReference savedRef=FirebaseDatabase.getInstance().getReference("User Posts").child(mail).child("SavedPost");
+
                 break;
             case R.id.rewards:
                 //some work.............................

@@ -125,4 +125,10 @@ public class PostExpand extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent=new Intent(getApplicationContext(),NavigationActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }
